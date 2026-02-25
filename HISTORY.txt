@@ -1,0 +1,34 @@
+# Lenin Meza Portfolio - Project History
+
+This file tracks the autonomous architectural decisions, feature implementations, and deployment fixes enacted by the Google Antigravity Agent during the creation of this enterprise portfolio.
+
+## [v1.0.3] - 2026-02-25
+### Added
+- **Architecture & Repositories Component (`PortfolioDetails.tsx`)**: Built a new section using glassmorphic cards to outline the autonomous agentic workflow used to build the portfolio.
+- **Latest Repositories Integration**: Utilized the GitHub GraphQL API to fetch the 5 most recently active repositories (both public and private: `gazeti-healthcheck-scripts`, `sbc-derqui-opensips`, `oml-daemon-script`, `cpi-visualization-app`, `oml-config-prod`) and injected them into the unified `src/data/subject.ts` data bridge.
+- **Deployment**: Verified successful automated rollout to GitHub Pages via the modified CD pipeline.
+
+## [v1.0.2] - 2026-02-25
+### Added
+- **`AGENTS.md` File**: Codified strict architectural context for future autonomous agents, enforcing the `output: 'export'` rule, the "Deep Dark Mode" Vibe Coding aesthetic, and the necessity to modify `subject.ts` rather than UI components.
+
+## [v1.0.1] - 2026-02-25
+### Fixed
+- **Next.js 15 GitHub Pages Build Conflict**: Removed the `static_site_generator: next` wrapper from `.github/workflows/deploy.yml` which aggressively overrode local `next.config.ts` parameters and caused a `404 Not Found` drop of statically exported HTML files.
+- Verified successful pipeline deployment using the pure `npm run build` artifact.
+
+## [v1.0.0] - 2026-02-25
+### Initialized
+- **Core Architecture Bootstrapped**: Scaffolded Next.js 15+ App Router, strictly configured for static export (`output: 'export'`, `images.unoptimized = true`).
+- **Design System Implemented**: "Deep Dark Mode" Vibe Coding utilizing Tailwind CSS v4 and `shadcn/ui` primitives.
+- **Micro-Animations Framework**: Integrated `framer-motion` for scroll-linked entrance animations.
+- **Immutable Context Layer**: Constructed `src/data/subject.ts` as the single source of truth for the Senior Software Architect identity, mitigating AI hallucination risks.
+- **Core Component Assembly**:
+    - `Hero.tsx`: High-impact typography and verified social validation links.
+    - `ExecutiveSummary.tsx`: Concentrated narrative on 17+ years of BaaS/Enterprise ecosystem experience.
+    - `SkillsMatrix.tsx`: Bento grid categorization of technical competencies.
+    - `Timeline.tsx`: Vertical, scroll-animated career architectural history mapping.
+    - `DigitalFootprint.tsx`: Visual validation of StackOverflow authority and Dev.to authorship.
+    - `Footer.tsx`: Actionable `/Lenin_Meza-Resume.pdf` static download implementation.
+- **Verification Loop**: Conducted initial browser subagent validation (`localhost:3000`) to confirm Framer Motion triggering and flexbox stability across viewports.
+- **Repository Initialization**: Bound the local artifact to `merolhack/merolhack.github.io` via `gh auth` and initiated the GitHub Actions CI/CD framework.
