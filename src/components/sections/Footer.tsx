@@ -25,8 +25,13 @@ export function Footer() {
           </a>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-zinc-900 w-full text-zinc-500 text-sm">
-          &copy; {new Date().getFullYear()} {subjectData.name}. All rights reserved. &bull; Deployed via GitHub Pages.
+        <div className="mt-8 pt-8 border-t border-zinc-900 w-full text-zinc-500 text-sm flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            &copy; {new Date().getFullYear()} {subjectData.name}. All rights reserved. &bull; Deployed via GitHub Pages.
+          </div>
+          <div className="flex gap-4">
+            <a href="/privacy" className="hover:text-zinc-300 transition-colors">Privacy Policy</a>
+          </div>
         </div>
       </div>
     </footer>
