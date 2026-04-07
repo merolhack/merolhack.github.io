@@ -132,5 +132,11 @@ export const subjectData = {
             url: "https://github.com/merolhack/oml-config-prod",
             isPrivate: true
         }
-    ]
+    ],
+    featuredProject: {
+        title: "The MACH Playbook",
+        subtitle: "A comprehensive guide to building modern, composable architectures.",
+        description: "I recently launched the MACH Playbook, a technical blog and resource dedicated to the pillars of modern web development: Microservices, API-first design, Cloud-native infrastructure, and Headless systems. Through this project, I share implementation strategies, case studies, and best practices for engineering scalable, future-proof applications that prioritize flexibility and developer experience.",
+        url: "https://merolhack.github.io/mach-playbook/"
+    }
 };
