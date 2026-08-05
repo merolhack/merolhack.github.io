@@ -7,7 +7,7 @@ export function FeaturedProject() {
   if (!featuredProject) return null;
 
   return (
-    <section className="py-20 bg-zinc-950 border-t border-zinc-900">
+    <section id="projects" className="py-20 bg-zinc-950 border-t border-zinc-900">
       <div className="container px-4 md:px-6 mx-auto max-w-4xl">
         <div className="flex flex-col items-center text-center space-y-8">
           <div className="p-4 bg-indigo-500/10 rounded-2xl border border-indigo-500/20 mb-2">

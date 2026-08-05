@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 
 export function PortfolioDetails() {
   return (
-    <section className="py-20 bg-zinc-950 border-t border-zinc-900">
+    <section id="repositories" className="py-20 bg-zinc-950 border-t border-zinc-900">
       <div className="container px-4 md:px-6 mx-auto max-w-6xl">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-100 mb-12 text-center">
           Architecture & Repositories

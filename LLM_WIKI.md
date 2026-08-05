@@ -98,7 +98,13 @@ The UI design guidelines reflect a **Senior Software Architect** persona:
 - **Glassmorphism**: Backdrop blur effects (`backdrop-blur-lg bg-white/5` or `backdrop-blur-md bg-zinc-900/40`) paired with subtle high-contrast border colors (`border-zinc-800`).
 - **Accent Lighting**: Strategic glowing accents on key path UI elements, node connections, and call-to-actions.
 - **Scroll Down Indicator**: Responsive, zero-intrusive glassmorphic mouse capsule & pulsing chevron in `Hero.tsx`. Uses hardware-accelerated Framer Motion scroll transforms (`useScroll` / `useTransform`) to automatically fade out (`1 -> 0` opacity) as soon as the user scrolls 80px down.
+- **Floating Header Navigation (`Navbar.tsx`)**: Fixed glassmorphic header capsule (`backdrop-blur-xl bg-zinc-950/80 rounded-full`) with smooth section anchors (`#summary`, `#skills`, `#metrics`, `#architecture`, `#timeline`, `#projects`, `#repositories`, `#contact`) and mobile drawer.
+- **Interactive System Topology (`ArchitectureDiagram.tsx`)**: Interactive breakdown of enterprise architecture nodes (Incode Identity Verification, BaaS Spring Boot Core Banking, GCP OpenSIPS VoIP Switch, PressVitals Site Auditor) with animated data pipeline flow indicators.
+- **Enterprise Impact Metrics (`ImpactMetrics.tsx`)**: Bento telemetry grid highlighting 17+ years experience, 48+ diagnostic probes, 7+ production repos, and TOGAF/BIAN standards.
+- **1-Click Copy Email (`CopyEmailButton.tsx`)**: Reusable button copying `merolhack@gmail.com` with animated toast feedback.
+- **AI Agent Structured Data (`JSON-LD`)**: `schema.org/Person` and `schema.org/ProfilePage` metadata injected into `layout.tsx` for Gemini, ChatGPT, Claude, and Perplexity indexing.
 - **Typography**: High-contrast, clean sans-serif typography.
+
 
 
 ---

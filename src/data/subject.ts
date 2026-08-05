@@ -152,5 +152,45 @@ export const subjectData = {
         subtitle: "A comprehensive guide to building modern, composable architectures.",
         description: "Learn MACH fundamentals through concrete service boundaries, clean APIs, and deployment examples, so architecture decisions feel tangible, not theoretical.",
         url: "https://mach-playbook.github.io/"
-    }
+    },
+    impactMetrics: [
+        { label: "Years Enterprise Experience", value: "17+", detail: "BaaS, Cloud & Enterprise Architecture", iconName: "Clock" },
+        { label: "Active Health & Audit Probes", value: "48+", detail: "PressVitals & GCP Diagnostic Suite", iconName: "Activity" },
+        { label: "Production & Open Repositories", value: "7+", detail: "Open Source & Architecture Playbooks", iconName: "Code2" },
+        { label: "Enterprise Standards", value: "TOGAF & BIAN", detail: "Banking Microservices & Telephony", iconName: "ShieldCheck" }
+    ],
+    architectureNodes: [
+        {
+            id: "identity",
+            title: "Incode Identity & Biometric Verification",
+            category: "Security & Onboarding",
+            description: "High-security biometric identity verification platform integrated into enterprise onboarding architecture (Coppel / The Cocktail) following BIAN standards.",
+            tech: ["Incode SDK", "Groovy", "REST APIs", "OAuth2", "Spring Boot"],
+            status: "Enterprise Production"
+        },
+        {
+            id: "baas",
+            title: "Core Banking & BaaS Microservices",
+            category: "Fintech & BaaS",
+            description: "Bank-as-a-Service Spring Boot microservices layer integrating Sabadell & Santander core banking systems (Bantotal, GeneXus) deployed on Kubernetes.",
+            tech: ["Java 21", "Spring Boot 3", "Docker", "Kubernetes", "Redis", "Kafka"],
+            status: "Enterprise Production"
+        },
+        {
+            id: "voip",
+            title: "OpenSIPS & GCP VoIP Telephony Cloud",
+            category: "Telecom & Cloud Infrastructure",
+            description: "Scalable VoIP telephony infrastructure deployed on Google Cloud Platform featuring OpenSIPS session border controllers and Yeti-switch trunk routing.",
+            tech: ["OpenSIPS", "Yeti-switch", "GCP", "Debian 13", "Ansible", "Bash"],
+            status: "Active Deployment"
+        },
+        {
+            id: "diagnostics",
+            title: "PressVitals & Diagnostic Engine",
+            category: "Observability & Performance",
+            description: "Headless WordPress site auditor engine featuring 22+ proactive probes for performance, security, and DB health — extensible to 48+ via REST API.",
+            tech: ["PHP 8.3", "GCP Compute Engine", "Bash", "Dynatrace", "REST API"],
+            status: "Published Open Source"
+        }
+    ]
 };

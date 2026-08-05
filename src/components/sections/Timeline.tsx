@@ -7,7 +7,7 @@ import { Briefcase } from "lucide-react";
 
 export function Timeline() {
   return (
-    <section className="py-20 bg-zinc-950">
+    <section id="timeline" className="py-20 bg-zinc-950">
       <div className="container px-4 md:px-6 mx-auto max-w-4xl relative">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-100 mb-16 text-center">
           Career Architecture

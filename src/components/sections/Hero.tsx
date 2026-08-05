@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Github, Linkedin, MessageSquare, Terminal, Award, ChevronDown } from "lucide-react";
 import { subjectData } from "@/data/subject";
 import { Button } from "@/components/ui/button";
+import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -18,7 +19,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pb-16">
+    <section id="summary" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pb-16 pt-20">
       {/* Background Gradient / Deep Dark */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-zinc-950 to-zinc-950 -z-10" />
       
@@ -49,8 +50,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="mt-10 flex flex-wrap justify-center gap-4"
+          className="mt-10 flex flex-wrap justify-center gap-4 items-center"
         >
+          <CopyEmailButton size="lg" />
           <a href={subjectData.social.github} target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="lg" className="border-zinc-700 bg-zinc-900/50 backdrop-blur-md hover:bg-zinc-800 text-zinc-100">
               <Github className="mr-2 h-5 w-5" />
