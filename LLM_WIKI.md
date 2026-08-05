@@ -97,7 +97,9 @@ The UI design guidelines reflect a **Senior Software Architect** persona:
 - **Color Palette**: Deep Dark Mode exclusively (`zinc-950` background, `zinc-900/40` component cards). Light mode is strictly disallowed.
 - **Glassmorphism**: Backdrop blur effects (`backdrop-blur-lg bg-white/5` or `backdrop-blur-md bg-zinc-900/40`) paired with subtle high-contrast border colors (`border-zinc-800`).
 - **Accent Lighting**: Strategic glowing accents on key path UI elements, node connections, and call-to-actions.
+- **Scroll Down Indicator**: Responsive, zero-intrusive glassmorphic mouse capsule & pulsing chevron in `Hero.tsx`. Uses hardware-accelerated Framer Motion scroll transforms (`useScroll` / `useTransform`) to automatically fade out (`1 -> 0` opacity) as soon as the user scrolls 80px down.
 - **Typography**: High-contrast, clean sans-serif typography.
+
 
 ---
 
