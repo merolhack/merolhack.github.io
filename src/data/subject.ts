@@ -103,6 +103,20 @@ export const subjectData = {
     },
     latestRepositories: [
         {
+            name: "pressvitals-site-auditor",
+            description: "A headless-first WordPress diagnostic engine featuring 22+ proactive probes for performance, security, and DB health — extensible to 48+ via REST API and custom filters.",
+            url: "https://github.com/merolhack/pressvitals-site-auditor",
+            websiteUrl: "https://wordpress.org/plugins/pressvitals-site-auditor/",
+            isPrivate: false
+        },
+        {
+            name: "mach-playbook.github.io",
+            description: "Learn MACH fundamentals through concrete service boundaries, clean APIs, and deployment examples, so architecture decisions feel tangible, not theoretical.",
+            url: "https://github.com/mach-playbook/mach-playbook.github.io",
+            websiteUrl: "https://mach-playbook.github.io/",
+            isPrivate: false
+        },
+        {
             name: "gazeti-healthcheck-scripts",
             description: "Bash scripts for GCP VM and container health check",
             url: "https://github.com/merolhack/gazeti-healthcheck-scripts",
@@ -134,9 +148,9 @@ export const subjectData = {
         }
     ],
     featuredProject: {
-        title: "The MACH Playbook",
+        title: "MACH Playbook",
         subtitle: "A comprehensive guide to building modern, composable architectures.",
-        description: "I recently launched the MACH Playbook, a technical blog and resource dedicated to the pillars of modern web development: Microservices, API-first design, Cloud-native infrastructure, and Headless systems. Through this project, I share implementation strategies, case studies, and best practices for engineering scalable, future-proof applications that prioritize flexibility and developer experience.",
-        url: "https://merolhack.github.io/mach-playbook/"
+        description: "Learn MACH fundamentals through concrete service boundaries, clean APIs, and deployment examples, so architecture decisions feel tangible, not theoretical.",
+        url: "https://mach-playbook.github.io/"
     }
 };

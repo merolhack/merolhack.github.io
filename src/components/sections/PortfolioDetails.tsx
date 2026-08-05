@@ -60,10 +60,22 @@ export function PortfolioDetails() {
                       >
                         {repo.name}
                       </a>
-                      <Badge variant="outline" className={`shrink-0 ${repo.isPrivate ? 'bg-zinc-900 border-zinc-800 text-zinc-400' : 'bg-teal-950/20 border-teal-900/50 text-teal-400'}`}>
-                        {repo.isPrivate ? <Lock className="w-3 h-3 mr-1" /> : <Globe className="w-3 h-3 mr-1" />}
-                        {repo.isPrivate ? "Private" : "Public"}
-                      </Badge>
+                      <div className="flex items-center space-x-2 shrink-0">
+                        {repo.websiteUrl && (
+                          <a
+                            href={repo.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-xs text-indigo-400 hover:text-indigo-300 font-medium px-2 py-0.5 rounded bg-indigo-950/40 border border-indigo-800/50 transition-colors"
+                          >
+                            <Globe className="w-3 h-3 mr-1" /> Plugin / Site
+                          </a>
+                        )}
+                        <Badge variant="outline" className={`${repo.isPrivate ? 'bg-zinc-900 border-zinc-800 text-zinc-400' : 'bg-teal-950/20 border-teal-900/50 text-teal-400'}`}>
+                          {repo.isPrivate ? <Lock className="w-3 h-3 mr-1" /> : <Globe className="w-3 h-3 mr-1" />}
+                          {repo.isPrivate ? "Private" : "Public"}
+                        </Badge>
+                      </div>
                     </div>
                     <p className="text-sm text-zinc-500 font-light line-clamp-2">
                       {repo.description || "No description provided."}
