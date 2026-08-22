@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Terminal, Menu, X, Code2, Layers, Cpu, Clock, FolderGit2, Mail } from "lucide-react";
+import { Terminal, Menu, X, Code2, Layers, Cpu, Clock, FolderGit2, BookMarked } from "lucide-react";
 import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
 
 interface NavItem {
@@ -13,6 +13,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { name: "Summary", href: "#summary", icon: Terminal },
+  { name: "Book", href: "#book", icon: BookMarked },
   { name: "Skills", href: "#skills", icon: Layers },
   { name: "Architecture", href: "#architecture", icon: Cpu },
   { name: "Timeline", href: "#timeline", icon: Clock },

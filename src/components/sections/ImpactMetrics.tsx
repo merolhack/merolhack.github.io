@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, Activity, Code2, ShieldCheck, LucideIcon } from "lucide-react";
+import { Clock, Activity, Code2, ShieldCheck, BookOpen, LucideIcon } from "lucide-react";
 import { subjectData } from "@/data/subject";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -10,6 +10,7 @@ const iconMap: Record<string, LucideIcon> = {
   Activity,
   Code2,
   ShieldCheck,
+  BookOpen,
 };
 
 export function ImpactMetrics() {

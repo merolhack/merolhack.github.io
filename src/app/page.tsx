@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { ExecutiveSummary } from "@/components/sections/ExecutiveSummary";
+import { BookPublication } from "@/components/sections/BookPublication";
 import { ImpactMetrics } from "@/components/sections/ImpactMetrics";
 import { SkillsMatrix } from "@/components/sections/SkillsMatrix";
 import { ArchitectureDiagram } from "@/components/sections/ArchitectureDiagram";
@@ -16,6 +17,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ExecutiveSummary />
+      <BookPublication />
       <ImpactMetrics />
       <SkillsMatrix />
       <ArchitectureDiagram />

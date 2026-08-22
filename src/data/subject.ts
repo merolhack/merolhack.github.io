@@ -1,6 +1,6 @@
 export const subjectData = {
     name: "Lenin Meza",
-    titles: ["Software Architect", "Technical Lead", "Full Stack Developer"],
+    titles: ["Software Architect", "Technical Author", "Technical Lead"],
     location: "El Marques, Querétaro, Mexico",
     contact: {
         email: "merolhack@gmail.com",
@@ -13,7 +13,7 @@ export const subjectData = {
         credly: "https://www.credly.com/users/lenin-jose-meza-zarco/badges",
     },
     summary:
-        "Over 17 years of progressive experience in Web and Enterprise technologies. Extensive, proven background in Bank as a Service (BaaS) infrastructure, complex identity verification platforms, and rigorous enterprise architecture (TOGAF, BIAN). Demonstrated track record in leading high-performance development teams and architecting secure, high-availability cloud systems.",
+        "Over 17 years of progressive experience in Web and Enterprise technologies. Extensive, proven background in Bank as a Service (BaaS) infrastructure, complex identity verification platforms, and rigorous enterprise architecture (TOGAF, BIAN). Author of 'Playbook de Arquitectura MACH' (Amazon KDP 2026). Demonstrated track record in leading high-performance development teams and architecting secure, high-availability cloud systems.",
     competencies: {
         frontend: [
             "Angular (2+, 4, 7)",
@@ -86,9 +86,52 @@ export const subjectData = {
         }
     ],
     highlights: {
-        github: "Maintainer and contributor to 'mern-stack' repositories demonstrating practical full-stack integrations.",
+        github: "Maintainer and contributor to 'mern-stack' repositories and open source architecture playbooks.",
         stackoverflow: "Extensive authority in deep backend troubleshooting: Redis daemon configurations, MariaDB GSSAPI plugin handling, AWS SMTP port management, and Android WebView Base64 processing.",
         devto: "Authorship and insights regarding MongoDB, Express.JS, React, and NodeJS ecosystem."
+    },
+    bookPublication: {
+        title: "Playbook de Arquitectura MACH",
+        subtitle: "Estrategias Prácticas para Sistemas Componibles, Microservicios y Headless en la Era Agente",
+        asin: "B0HFYGC34D",
+        amazonUrl: "https://www.amazon.es/dp/B0HFYGC34D",
+        websiteUrl: "https://mach-playbook.github.io/",
+        coverImage: "/images/books/mach-architecture-playbook-cover.jpg",
+        edition: "Amazon KDP Edition 2026",
+        language: "Español (México)",
+        pages: 314,
+        chapters: 30,
+        diagrams: 36,
+        parts: 8,
+        description:
+            "La guía técnica definitiva para arquitectos de software, líderes de ingeniería y CTOs que necesitan diseñar, migrar y operar sistemas modernos de misión crítica basados en el paradigma MACH (Microservices, API-First, Cloud-Native, Headless) y agentes autónomos de IA.",
+        fullDescription:
+            "A través de 30 capítulos y 8 partes estratégicas, este libro desmitifica la arquitectura componible con implementaciones de producción: límites de dominio con DDD, transacciones distribuidas con Saga Pattern, resiliencia con Circuit Breaker y CDC con Debezium/Kafka, seguridad Zero-Trust con mTLS/SPIRE, frontends headless con Next.js 15, VoIP cloud-native y automatización con agentes IA mediante Model Context Protocol (MCP).",
+        pillars: [
+            {
+                title: "Microservicios & DDD",
+                description: "Delimitación de dominios, Bounded Contexts, Database-per-Service y eliminación del monolito distribuido."
+            },
+            {
+                title: "API-First & Resiliencia",
+                description: "OpenAPI 3.1, Spectral, idempotencia bancaria SHA-256, Patrón Saga, Outbox y Change Data Capture (CDC)."
+            },
+            {
+                title: "Cloud-Native & Zero-Trust",
+                description: "Multi-Cloud GCP/AWS, identidades criptográficas SPIFFE/SPIRE, mTLS en Service Mesh (Istio) y políticas OPA."
+            },
+            {
+                title: "Headless, Edge & AI Agents",
+                description: "Next.js 15 App Router, CDN Edge Caching de 5 capas, VoIP Cloud y servidores Model Context Protocol (MCP)."
+            }
+        ],
+        caseStudies: ["Nike (Flash sales & -62% infra)", "Sephora (Omnicanal en 34 países)", "Wegmans (Resiliencia ante tormenta Fern 2026)", "CarParts.com (Comercio con Agentes IA)"],
+        highlights: [
+            "314 Páginas físicas (Formato 6x9 in)",
+            "36 Diagramas rasterizados de alta fidelidad",
+            "Suite de Validación Editorial Pre-Flight 100% PASS",
+            "Código y patrones listos para entornos de producción"
+        ]
     },
     portfolioCreation: {
         title: "How this Portfolio was Created",
@@ -155,8 +198,8 @@ export const subjectData = {
     },
     impactMetrics: [
         { label: "Years Enterprise Experience", value: "17+", detail: "BaaS, Cloud & Enterprise Architecture", iconName: "Clock" },
+        { label: "Published KDP Book", value: "314 Págs", detail: "Playbook de Arquitectura MACH (2026)", iconName: "BookOpen" },
         { label: "Active Health & Audit Probes", value: "48+", detail: "PressVitals & GCP Diagnostic Suite", iconName: "Activity" },
-        { label: "Production & Open Repositories", value: "7+", detail: "Open Source & Architecture Playbooks", iconName: "Code2" },
         { label: "Enterprise Standards", value: "TOGAF & BIAN", detail: "Banking Microservices & Telephony", iconName: "ShieldCheck" }
     ],
     architectureNodes: [

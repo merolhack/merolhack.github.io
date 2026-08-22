@@ -26,11 +26,16 @@ export function FeaturedProject() {
             {featuredProject.description}
           </p>
 
-          <div className="pt-6">
+          <div className="pt-6 flex flex-wrap gap-4 justify-center items-center">
             <a href={featuredProject.url} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-8 py-6 text-lg h-auto shadow-lg shadow-indigo-900/20 transition-all hover:scale-105">
-                Read the Playbook
+              <Button className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-7 py-6 text-base h-auto shadow-lg shadow-indigo-900/20 transition-all hover:scale-105">
+                Read Web Playbook
                 <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
+            <a href="https://www.amazon.es/dp/B0HFYGC34D" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" className="border-amber-500/50 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 rounded-full px-7 py-6 text-base h-auto transition-all hover:scale-105">
+                Amazon KDP Book (314p)
               </Button>
             </a>
           </div>
