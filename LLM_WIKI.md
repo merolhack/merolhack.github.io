@@ -8,15 +8,15 @@
 
 - **Repository**: `merolhack/merolhack.github.io`
 - **Project Name**: `lenin-meza-portfolio`
-- **Wiki Version**: `1.0.0`
-- **Last Ingest Date**: 2026-08-04
+- **Wiki Version**: `1.0.1`
+- **Last Ingest Date**: 2026-09-28
 - **Maintained By**: Google Antigravity & Senior Architect (Lenin Meza)
 
 ### Ingestion Source Index
 
 | Raw Source File | Document Purpose | Synthesized Wiki Section |
 | :--- | :--- | :--- |
-| [`AGENTS.md`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/AGENTS.md) | Agent operational constraints, design rules, static export mandates | [Section 2: Architectural Mandates](#2-architectural-mandates--tech-stack) |
+| [`AGENTS.md`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/AGENTS.md) | Agent operational constraints, design rules, static export mandates, Ollama secondary model delegation protocol | [Section 2](#2-architectural-mandates--tech-stack) & [Section 6](#6-secondary-model-delegation-protocol-ollama-gemma4-cloud--qwen3-local) |
 | [`README.md`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/README.md) | Project bootstrap, setup, and deployment summary | [Section 4: Operational Playbooks](#4-operational-playbooks--deployment) |
 | [`WALKTHROUGH.md`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/WALKTHROUGH.md) | SDLC step-by-step verification, subagent UI audits | [Section 4.2: UI & Browser Verification Protocol](#42-ui--browser-verification-protocol) |
 | [`HISTORY.txt`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/HISTORY.txt) | Release history & architectural decision audit log | [Section 5: Project Version History & Audit Log](#5-project-version-history--audit-log) |
@@ -42,8 +42,10 @@
    - 4.1 [CI/CD Pipeline Protocol](#41-cicd-pipeline-protocol)
    - 4.2 [UI & Browser Verification Protocol](#42-ui--browser-verification-protocol)
    - 4.3 [Troubleshooting & Gotchas](#43-troubleshooting--gotchas)
+   - 4.4 [Web Analytics & Telemetry Protocol (Google Analytics GA4)](#44-web-analytics--telemetry-protocol-google-analytics-ga4)
 5. [Project Version History & Audit Log](#5-project-version-history--audit-log)
-6. [LLM Wiki Maintenance Protocol](#6-llm-wiki-maintenance-protocol)
+6. [Secondary Model Delegation Protocol (Ollama: Gemma4 Cloud / Qwen3 Local)](#6-secondary-model-delegation-protocol-ollama-gemma4-cloud--qwen3-local)
+7. [LLM Wiki Maintenance Protocol](#7-llm-wiki-maintenance-protocol)
 
 ---
 
@@ -189,9 +191,64 @@ const DynamicChart = dynamic(
 );
 ```
 
+### 4.4 Web Analytics & Telemetry Protocol (Google Analytics GA4)
+
+For continuous traffic observation, visitor demographics, and user behavior analysis, the portfolio integrates **Google Analytics 4 (GA4)** under the unified GitHub Pages account hierarchy.
+
+#### Account & Property Topology
+- **GA Account Name**: `Github Pages` (or `Antigravity GA Account`)
+- **GA Account ID**: `389930119`
+- **GA4 Property Name**: `merolhack.github.io`
+- **GA4 Property ID**: `531281877`
+
+#### Web Data Stream Specification
+- **Stream Name**: `merolhack.github.io`
+- **Stream URL**: `https://merolhack.github.io`
+- **Stream ID**: `15862982513`
+- **Measurement ID**: `G-8STYZ8GZRJ`
+
+#### Integration Pattern in Next.js App Router
+Tracking tags are injected directly into `src/app/layout.tsx` via Next.js `next/script` using the `afterInteractive` loading strategy:
+```tsx
+import Script from "next/script";
+
+// Inside RootLayout <head>:
+<Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-8STYZ8GZRJ"
+  strategy="afterInteractive"
+/>
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8STYZ8GZRJ');
+  `}
+</Script>
+```
+- **Zero FCP Degradation**: Deferred execution prevents thread blocking during First Contentful Paint.
+- **Static Export Conformance**: Compatible with `output: 'export'` without requiring dynamic SSR middleware.
+
 ---
 
 ## 5. Project Version History & Audit Log
+
+### `[v1.0.6]` - 2026-09-28
+- **Added**: Google Analytics 4 (GA4) integration under the `Github Pages` account (`389930119`), property `merolhack.github.io` (`531281877`), and web stream `merolhack.github.io` (`G-8STYZ8GZRJ`, Stream ID: `15862982513`).
+- **Updated**: Injected Next.js `next/script` gtag telemetry scripts in `src/app/layout.tsx` with `afterInteractive` strategy.
+- **Ingested**: Documented GA4 telemetry specifications into `LLM_WIKI.md` Section 4.4.
+- **Verified**: Production build (`npm run build`) validated with static export (`output: 'export'`).
+
+### `[v1.0.5]` - 2026-09-23
+- **Updated**: Formalized Secondary Model Delegation Protocol for Ollama: Multi-tier cascade prioritizing `gemma4:cloud` whenever weekly usage quota is available (< 90%), falling back automatically to local `qwen3:8b-8k`.
+- **Mandate**: Synchronized `AGENTS.md`, `LLM_WIKI.md`, and global Antigravity instructions (`GEMINI.md`) to guarantee zero primary agent token waste on mechanical tasks.
+- **Verified**: Verified fallback execution and status via `call_mcp_tool` &rarr; `ollama-local` &rarr; `consultar_modelo_local`.
+
+### `[v1.0.4]` - 2026-09-18
+- **Added**: Formalized Local Model Delegation Protocol for Ollama (`qwen3:8b` / `qwen3:8b-8k`) and the `ollama-local` MCP server.
+- **Mandate**: Enforced mandatory ("MUST") delegation matrix for routine, mechanical, low-risk tasks to conserve cloud API tokens and minimize latency.
+- **Verified**: Active connection and sub-second inference test via `call_mcp_tool` &rarr; `ollama-local` &rarr; `consultar_modelo_local`.
 
 ### `[v1.0.3]` - 2026-02-25
 - **Added**: `PortfolioDetails.tsx` component showcasing autonomous agentic portfolio engineering.
@@ -211,12 +268,64 @@ const DynamicChart = dynamic(
 
 ---
 
-## 6. LLM Wiki Maintenance Protocol
+## 6. Secondary Model Delegation Protocol (Ollama: Gemma4 Cloud / Qwen3 Local)
+
+### 6.1 Multi-Tier Delegation Architecture & Model Hierarchy
+Whenever a task is mechanical, repetitive, or low-risk, agents **MUST** delegate execution via the MCP tool `consultar_modelo_local` (`ollama-local` server) rather than consuming primary agent tokens.
+
+The delegation cascade operates strictly in the following priority order:
+1. **Priority 1 — `gemma4:cloud`**: Primary choice whenever weekly usage quota is available (< 90%). Utilizes Google DeepMind Gemma 4 (31B) via Ollama Cloud API for higher structured reasoning, precision, and zero local hardware load.
+2. **Priority 2 (Fallback) — `qwen3:8b-8k`**: Mandatory local fallback invoked automatically when weekly cloud quota is exhausted (>= 90%) or when cloud connectivity fails. Runs 100% locally on-device.
+
+### 6.2 Technical Profiles of Secondary Models
+
+#### A. Priority 1 Cloud Model: `gemma4:cloud`
+- **Developer**: Google DeepMind (Gemma 4 series).
+- **Environment**: Ollama Cloud API endpoint (`gemma4:cloud`).
+- **Scale**: ~31 Billion parameters.
+- **Quota Gatekeeper**: Checked via Ollama weekly usage endpoint. If usage is < 90%, all delegated requests are routed here first.
+- **Capabilities**: Complex structured text, precise docstring formatting, high-level code transformations, and zero host VRAM consumption.
+
+#### B. Fallback Local Model: `qwen3:8b-8k`
+- **Developer**: Alibaba Cloud (Qwen Team).
+- **Architecture**: Dense decoder-only Transformer with **8.2 Billion parameters** (8.2B).
+- **Local Ollama Environment**:
+  - **Local Tag**: `qwen3:8b-8k` (base model `qwen3:8b`).
+  - **Quantization**: `Q4_K_M` in GGUF format (~5.22 GB memory/VRAM footprint).
+  - **Context Window**: Native support up to **40,960 tokens** (optimized active inference window configured to 8,192 tokens for rapid local responses).
+  - **Capabilities**: Native function calling (tools), chain-of-thought reasoning (*thinking*), robust code generation, and strong bilingual (Spanish/English) fluency.
+- **MCP Server Configuration**:
+  - **Server Name**: `ollama-local`
+  - **Bridge Script**: `C:\Users\lenin\Documents\AIDevelopment\ollama\ollama_mcp_server.py`
+  - **Tool**: `consultar_modelo_local` (HTTP endpoint `http://localhost:11434/v1/chat/completions`).
+
+### 6.3 Tool Verification & Cascading Behavior
+The bridge script `ollama_mcp_server.py` transparently performs the quota pre-flight check. If quota is healthy, `gemma4:cloud` executes; if quota is exhausted or unreachable, it falls back to `qwen3:8b-8k` locally with sub-second latency:
+> *"Soy Qwen, un modelo de lenguaje desarrollado por Tongyi Lab, capaz de responder preguntas, crear contenido y ayudar en diversas tareas."*
+
+### 6.4 Mandatory Delegation Matrix ("MUST")
+All agents interacting with this repository **MUST** adhere to the following task assignment matrix:
+
+| Tipo de Tarea | Acción | Herramienta Ejecutora |
+| :--- | :---: | :--- |
+| **Docstrings, comentarios y anotaciones de tipo** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
+| **Boilerplate repetitivo y formateo de estructuras** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
+| **Limpieza de Markdown, regex y parseo básico** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
+| **Traducciones y resúmenes mecánicos aislados** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
+| **Consultas puntuales sin contexto multi-archivo** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
+| **Decisiones de arquitectura y diseño de sistemas** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
+| **Refactorizaciones que tocan múltiples archivos** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
+| **Operaciones de Git, CI/CD y despliegues** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
+| **Políticas de AdSense, seguridad y auditorías** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
+
+---
+
+## 7. LLM Wiki Maintenance Protocol
 
 To maintain the integrity and compounding value of this LLM Wiki:
 
 1. **Ingest Phase**: Whenever new source files, architectural rules, or deployment workflows are added to the workspace, an AI agent must read the new sources and update `LLM_WIKI.md`.
-2. **Synthesis & Deduplication**: Do not append duplicate notes. Merge new insights into the relevant modules (e.g., update [Section 3](#3-subject--enterprise-domain-model) for background changes, [Section 4](#4-operational-playbooks--deployment) for pipeline changes).
+2. **Synthesis & Deduplication**: Do not append duplicate notes. Merge new insights into the relevant modules (e.g., update [Section 3](#3-subject--enterprise-domain-model) for background changes, [Section 4](#4-operational-playbooks--deployment) for pipeline changes, [Section 6](#6-local-model-delegation-protocol-ollama--qwen38b) for local model delegation updates).
 3. **Cross-Link Integrity**: Maintain relative file links (e.g., `file:///...`) and internal section anchors (`#section-id`).
 4. **Wiki Health Check / Linting**:
    - Check that all listed dependencies in Section 2 match `package.json`.

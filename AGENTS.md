@@ -78,3 +78,44 @@ const MyHeavyComponent = dynamic(() => import('@/components/Heavy'), { ssr: fals
 3. **Post-Task Sync:**
    - After completing edits, run `detect_changes` to ensure the codebase graph reflects all newly created or modified functions/routes.
 
+---
+
+## 7. Secondary Model Delegation Protocol (Ollama: Gemma4 Cloud / Qwen3 Local) [MUST / MANDATORY]
+
+### 7.1 Operational Mandate & Model Hierarchy
+Whenever a task is mechanical, repetitive, or low-risk, agents **MUST** delegate execution to the secondary models via the MCP tool `consultar_modelo_local` (`ollama-local` server) rather than resolving it directly with the primary agent model. This minimizes consumption of primary tokens and latency for routine operations.
+
+The delegation strictly adheres to the following cascade:
+1. **FIRST — `gemma4:cloud`**: Primary choice whenever sufficient weekly usage quota is available (< 90%). Provides higher reasoning capability, 31B scale, and precision for structured tasks.
+2. **SUBSEQUENTLY — `qwen3:8b-8k`**: Mandatory local fallback when weekly cloud quota is exhausted (>= 90%) or if cloud connectivity fails. Runs 100% locally on-device.
+
+> **Execution Note:** The MCP tool `consultar_modelo_local` automatically manages this quota check and fallback natively. Direct API/CLI interactions with Ollama must honor the exact same order.
+
+### 7.2 Technical Specifications of Delegated Models
+- **Cloud Model (Priority 1)**: `gemma4:cloud`
+  - **Developer**: Google DeepMind (Gemma 4 family).
+  - **Architecture**: 31B parameters via Ollama Cloud API endpoint.
+  - **Condition**: Dispatched when weekly usage quota is below the 90% threshold.
+- **Local Model (Fallback 2)**: `qwen3:8b-8k`
+  - **Developer**: Alibaba Cloud (Qwen Team).
+  - **Architecture**: Dense decoder-only Transformer (8.2B parameters).
+  - **Quantization**: `Q4_K_M` GGUF (~5.22 GB memory/VRAM footprint).
+  - **Context Window**: Native up to 40,960 tokens (optimized active window of 8,192 tokens for rapid inference).
+  - **Condition**: Active fallback whenever quota is unavailable or cloud calls fail.
+- **MCP Bridge**: `ollama-local` &rarr; `consultar_modelo_local` (`C:\Users\lenin\Documents\AIDevelopment\ollama\ollama_mcp_server.py` connecting to `http://localhost:11434/v1/chat/completions`).
+
+### 7.3 Mandatory Delegation Matrix
+
+| Tipo de Tarea | Acción | Herramienta Ejecutora |
+| :--- | :---: | :--- |
+| **Docstrings, comentarios y anotaciones de tipo** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
+| **Boilerplate repetitivo y formateo de estructuras** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
+| **Limpieza de Markdown, regex y parseo básico** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
+| **Traducciones y resúmenes mecánicos aislados** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
+| **Consultas puntuales sin contexto multi-archivo** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
+| **Decisiones de arquitectura y diseño de sistemas** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
+| **Refactorizaciones que tocan múltiples archivos** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
+| **Operaciones de Git, CI/CD y despliegues** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
+| **Políticas de AdSense, seguridad y auditorías** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
+
+
