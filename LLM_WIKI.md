@@ -1,333 +1,58 @@
 # LLM Wiki: Lenin Meza Enterprise Portfolio (`merolhack.github.io`)
 
-> **LLM Wiki Pattern Notice**: This document serves as a persistent, self-contained knowledge compilation for AI agents (and human engineers) interacting with the `lenin-meza-portfolio` repository. Following the **Karpathy LLM Wiki** architectural model, this wiki synthesizes raw project files, architectural mandates, enterprise domain context, deployment workflows, and historical decisions into an interlinked, compound knowledge base.
+> **Architectural Pattern**: Modular LLM Wiki ([Andrej Karpathy Gist Reference](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f))  
+> **Status**: Modularized into [`wiki/`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/) directory  
+> **Repository**: `merolhack/merolhack.github.io` (`lenin-meza-portfolio`)
 
 ---
 
-## 📌 Wiki Metadata & Ingestion Manifest
+## 🏛️ Architecture of this Wiki
 
-- **Repository**: `merolhack/merolhack.github.io`
-- **Project Name**: `lenin-meza-portfolio`
-- **Wiki Version**: `1.0.1`
-- **Last Ingest Date**: 2026-09-28
-- **Maintained By**: Google Antigravity & Senior Architect (Lenin Meza)
+Per the **Karpathy LLM Wiki pattern**, this knowledge base is divided into three distinct layers:
 
-### Ingestion Source Index
+1. **Raw Sources (Immutable)**: The actual repository code and configuration (`src/`, `package.json`, `next.config.ts`, `.github/workflows/deploy.yml`).
+2. **The Schema**: Defined in [`wiki/schema.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/schema.md), dictating how agents ingest sources, answer queries, and run lint passes.
+3. **The Wiki**: A structured, modular directory of markdown files in [`wiki/`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/) maintained continuously by AI agents.
 
-| Raw Source File | Document Purpose | Synthesized Wiki Section |
-| :--- | :--- | :--- |
-| [`AGENTS.md`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/AGENTS.md) | Agent operational constraints, design rules, static export mandates, Ollama secondary model delegation protocol | [Section 2](#2-architectural-mandates--tech-stack) & [Section 6](#6-secondary-model-delegation-protocol-ollama-gemma4-cloud--qwen3-local) |
-| [`README.md`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/README.md) | Project bootstrap, setup, and deployment summary | [Section 4: Operational Playbooks](#4-operational-playbooks--deployment) |
-| [`WALKTHROUGH.md`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/WALKTHROUGH.md) | SDLC step-by-step verification, subagent UI audits | [Section 4.2: UI & Browser Verification Protocol](#42-ui--browser-verification-protocol) |
-| [`HISTORY.txt`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/HISTORY.txt) | Release history & architectural decision audit log | [Section 5: Project Version History & Audit Log](#5-project-version-history--audit-log) |
-| [`src/data/subject.ts`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/src/data/subject.ts) | Immutable master data context for Lenin Meza profile | [Section 3: Subject & Enterprise Domain Model](#3-subject--enterprise-domain-model) |
-| [`.github/workflows/deploy.yml`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/.github/workflows/deploy.yml) | GitHub Actions CI/CD deployment configuration | [Section 4.1: CI/CD Pipeline Protocol](#41-cicd-pipeline-protocol) |
-| [`package.json`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/package.json) | Dependency tree, framework versions, scripts | [Section 2.2: Technology Stack & Dependencies](#22-technology-stack--dependencies) |
-| [`next.config.ts`](file:///wsl.localhost/Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/next.config.ts) | Static export & asset optimization configuration | [Section 2.1: Next.js Static Export Mandate](#21-nextjs-static-export-mandate) |
-
----
-
-## 🗂️ Table of Contents
-
-1. [Overview & System Purpose](#1-overview--system-purpose)
-2. [Architectural Mandates & Tech Stack](#2-architectural-mandates--tech-stack)
-   - 2.1 [Next.js Static Export Mandate](#21-nextjs-static-export-mandate)
-   - 2.2 [Technology Stack & Dependencies](#22-technology-stack--dependencies)
-   - 2.3 [Design System & Vibe Coding Aesthetics](#23-design-system--vibe-coding-aesthetics)
-3. [Subject & Enterprise Domain Model](#3-subject--enterprise-domain-model)
-   - 3.1 [Lenin Meza Professional Background](#31-lenin-meza-professional-background)
-   - 3.2 [Core Technical Competencies](#32-core-technical-competencies)
-   - 3.3 [Active Enterprise Repositories & Integrations](#33-active-enterprise-repositories--integrations)
-4. [Operational Playbooks & Deployment](#4-operational-playbooks--deployment)
-   - 4.1 [CI/CD Pipeline Protocol](#41-cicd-pipeline-protocol)
-   - 4.2 [UI & Browser Verification Protocol](#42-ui--browser-verification-protocol)
-   - 4.3 [Troubleshooting & Gotchas](#43-troubleshooting--gotchas)
-   - 4.4 [Web Analytics & Telemetry Protocol (Google Analytics GA4)](#44-web-analytics--telemetry-protocol-google-analytics-ga4)
-5. [Project Version History & Audit Log](#5-project-version-history--audit-log)
-6. [Secondary Model Delegation Protocol (Ollama: Gemma4 Cloud / Qwen3 Local)](#6-secondary-model-delegation-protocol-ollama-gemma4-cloud--qwen3-local)
-7. [LLM Wiki Maintenance Protocol](#7-llm-wiki-maintenance-protocol)
-
----
-
-## 1. Overview & System Purpose
-
-The `lenin-meza-portfolio` application is a high-performance, statically exported web application serving as the official enterprise portfolio for **Lenin Meza** (Senior Software Architect & Technical Lead). 
-
-### Key Project Goals
-1. **Purity of Information**: Decouple biographical data from UI layout using an immutable data layer (`src/data/subject.ts`) to eliminate AI hallucinations.
-2. **Zero-Server Infrastructure**: Statically compile 100% of the site for hosting on **GitHub Pages**, eliminating server runtime costs and potential Node.js execution security risks.
-3. **Vibe Coding Excellence**: Present a visually striking "Deep Dark Mode" interface designed to showcase 17+ years of Bank-as-a-Service (BaaS), identity verification, and VoIP cloud architecture experience.
-
----
-
-## 2. Architectural Mandates & Tech Stack
-
-### 2.1 Next.js Static Export Mandate
-
-GitHub Pages runs purely static web servers. Therefore:
-- **`output: 'export'`**: Defined in `next.config.ts`. All routes compile to plain HTML/CSS/JS in `/out`.
-- **No Dynamic Server Runtime**: Never introduce API routes (`/src/app/api/...`), `getServerSideProps`, `headers()`, `cookies()`, or server actions.
-- **Unoptimized Images**: `images: { unoptimized: true }` MUST remain active in `next.config.ts`. Standard Next.js server-side image resizing will fail on GitHub Pages.
-
-```typescript
-// next.config.ts
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true,
-  },
-};
-
-export default nextConfig;
+```mermaid
+graph LR
+    Root["LLM_WIKI.md<br/>(Master Entry)"] --> Index["wiki/index.md<br/>(Content Catalog)"]
+    Root --> Schema["wiki/schema.md<br/>(Rules & Lifecycle)"]
+    Root --> Log["wiki/log.md<br/>(Event Timeline)"]
+    
+    Index --> Mod1["wiki/overview.md"]
+    Index --> Mod2["wiki/architecture.md"]
+    Index --> Mod3["wiki/design-system.md"]
+    Index --> Mod4["wiki/subject-profile.md"]
+    Index --> Mod5["wiki/projects-and-repositories.md"]
+    Index --> Mod6["wiki/telemetry-and-analytics.md"]
+    Index --> Mod7["wiki/operational-playbooks.md"]
+    Index --> Mod8["wiki/model-delegation.md"]
+    Index --> Mod9["wiki/audit-history.md"]
 ```
 
-### 2.2 Technology Stack & Dependencies
+---
 
-- **Framework**: Next.js 16.1.6 (App Router)
-- **UI Runtime**: React 19.2.3 / React DOM 19.2.3
-- **Styling Engine**: Tailwind CSS v4 (`@tailwindcss/postcss` v4)
-- **UI Components**: Shadcn/ui (`shadcn` v3.8.5) & Radix UI primitives (`radix-ui` v1.4.3)
-- **Animations**: Framer Motion (`framer-motion` v12.34.3)
-- **Icons**: `lucide-react` (v0.575.0)
-- **Utilities**: `clsx` (v2.1.1), `tailwind-merge` (v3.5.0), `class-variance-authority` (v0.7.1)
+## 🚀 Quick Navigation
 
-### 2.3 Design System & Vibe Coding Aesthetics
+AI agents and human developers should use [`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md) as the primary index rather than reading the entire codebase:
 
-The UI design guidelines reflect a **Senior Software Architect** persona:
-- **Color Palette**: Deep Dark Mode exclusively (`zinc-950` background, `zinc-900/40` component cards). Light mode is strictly disallowed.
-- **Glassmorphism**: Backdrop blur effects (`backdrop-blur-lg bg-white/5` or `backdrop-blur-md bg-zinc-900/40`) paired with subtle high-contrast border colors (`border-zinc-800`).
-- **Accent Lighting**: Strategic glowing accents on key path UI elements, node connections, and call-to-actions.
-- **Scroll Down Indicator**: Responsive, zero-intrusive glassmorphic mouse capsule & pulsing chevron in `Hero.tsx`. Uses hardware-accelerated Framer Motion scroll transforms (`useScroll` / `useTransform`) to automatically fade out (`1 -> 0` opacity) as soon as the user scrolls 80px down.
-- **Floating Header Navigation (`Navbar.tsx`)**: Fixed glassmorphic header capsule (`backdrop-blur-xl bg-zinc-950/80 rounded-full`) with smooth section anchors (`#summary`, `#skills`, `#metrics`, `#architecture`, `#timeline`, `#projects`, `#repositories`, `#contact`) and mobile drawer.
-- **Interactive System Topology (`ArchitectureDiagram.tsx`)**: Interactive breakdown of enterprise architecture nodes (Incode Identity Verification, BaaS Spring Boot Core Banking, GCP OpenSIPS VoIP Switch, PressVitals Site Auditor) with animated data pipeline flow indicators.
-- **Enterprise Impact Metrics (`ImpactMetrics.tsx`)**: Bento telemetry grid highlighting 17+ years experience, 48+ diagnostic probes, 7+ production repos, and TOGAF/BIAN standards.
-- **1-Click Copy Email (`CopyEmailButton.tsx`)**: Reusable button copying `merolhack@gmail.com` with animated toast feedback.
-- **AI Agent Structured Data (`JSON-LD`)**: `schema.org/Person` and `schema.org/ProfilePage` metadata injected into `layout.tsx` for Gemini, ChatGPT, Claude, and Perplexity indexing.
-- **Typography**: High-contrast, clean sans-serif typography.
+### 1. Foundations & Engineering Mandates
+- **[System Overview](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/overview.md)**: Goals, static architecture, and zero-server infrastructure.
+- **[Technical Architecture](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/architecture.md)**: Next.js static export (`output: 'export'`), React 19, Tailwind CSS v4, and directory layout.
+- **[Design System](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/design-system.md)**: Deep Dark Mode tokens, glassmorphism, Framer Motion scroll indicators, and Navbar thresholds.
 
+### 2. Subject & Domain Knowledge
+- **[Subject Profile: Lenin Meza](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/subject-profile.md)**: 17+ years enterprise timeline, BaaS architecture, Incode biometrics, and competencies.
+- **[Projects, Book & Repositories](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/projects-and-repositories.md)**: Live platforms (DQRO.mx, Freelance México), Amazon KDP Book (314p), and active GitHub repos.
 
+### 3. Operations & Automation
+- **[Telemetry & Search Console](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/telemetry-and-analytics.md)**: Google Analytics GA4 (`G-8STYZ8GZRJ`), Search Console verification file (`google7d4ec8c5344a17de.html`), JSON-LD schema.
+- **[Operational Playbooks & CI/CD](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/operational-playbooks.md)**: GitHub Pages deployment pipeline, UI component procedures, and troubleshooting gotchas.
+- **[Model Delegation Protocol](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/model-delegation.md)**: Secondary model delegation hierarchy (`gemma4:cloud` &rarr; `qwen3:8b-8k` local) and mandatory delegation matrix.
+- **[Version History & Audit Log](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/audit-history.md)**: Complete chronological release milestones.
 
 ---
 
-## 3. Subject & Enterprise Domain Model
-
-### 3.1 Lenin Meza Professional Background
-
-- **Role**: Senior Software Architect / Technical Lead / Full Stack Developer
-- **Location**: El Marqués, Querétaro, Mexico
-- **Experience**: 17+ years in Web & Enterprise architecture, specializing in Bank-as-a-Service (BaaS) platforms, identity verification frameworks (Incode), and enterprise standards (TOGAF, BIAN).
-
-#### Key Career History Highlights
-- **Full-Stack Developer VoIP / Gazeti** (*Sep 2025 – Present*): GCP VoIP architecture, OpenSIPS configuration, Yeti-switch trunking.
-- **Software Architect / The Cocktail** (*Sep 2022 – Present*): Incode Identity Verification integration, Coppel onboarding architecture, BIAN/TOGAF compliance.
-- **Senior Consultant / Walmart (Indra)** (*Sep 2021 – Sep 2022*): Dynatrace/OBM monitoring, ServiceNow API automation via Groovy.
-- **Senior Consultant / Sabadell (Indra)** (*Nov 2019 – Sep 2021*): Core Banking enhancements (Bantotal, GeneXus), BaaS microservices using Spring Boot & Docker/K8s.
-- **Technical Lead / Santander** (*Jan 2018 – Jun 2019*): Digital Factory Spotlight, BaaS API mapping, Angular SPA applications.
-
-### 3.2 Core Technical Competencies
-
-- **Frontend**: React, TypeScript, Angular (2-7), Bootstrap 4+, HTML5/CSS3, ECMAScript.
-- **Backend**: Java (1.8, 17, 21), Spring Boot (1.5, 2, 3), Node.js (Express), PHP (Laravel, Magento), Serverless.
-- **Data Persistence**: MongoDB, MySQL, SQL Server, Redis, Memcached, Oracle PL/SQL.
-- **Cloud & DevOps**: AWS (EC2, S3, EMR), GCP, Docker, Kubernetes, GitLab CI/CD, Jenkins, Control-M, Dynatrace.
-
-### 3.3 Active Enterprise Repositories & Integrations
-
-Dynamic repository telemetry is fed into `src/data/subject.ts` via GitHub GraphQL API integration:
-1. `pressvitals-site-auditor`: Headless-first WordPress diagnostic engine (Repository: `https://github.com/merolhack/pressvitals-site-auditor` \| Plugin Directory: `https://wordpress.org/plugins/pressvitals-site-auditor/`).
-2. `mach-playbook.github.io`: MACH architecture guide (Repository: `https://github.com/mach-playbook/mach-playbook.github.io` \| Live Blog: `https://mach-playbook.github.io/`).
-3. `gazeti-healthcheck-scripts`: Bash scripts for GCP VM and container health checks (Private).
-4. `sbc-derqui-opensips`: OpenSIPS configuration files for Debian 13 On-Premises SBC (Private).
-5. `oml-daemon-script`: OMniLeads auto-dialer Python daemon (Private).
-6. `cpi-visualization-app`: Next.js application connected to Supabase using D3.js charts (Public).
-7. `oml-config-prod`: Gazeti OMniLeads Ansible production provisioning (Private).
-
-
-
-
----
-
-## 4. Operational Playbooks & Deployment
-
-### 4.1 CI/CD Pipeline Protocol
-
-GitHub Pages deployment is driven by `.github/workflows/deploy.yml`.
-
-#### Key Actions Workflow Structure:
-1. **Checkout & Node 20 Setup**: Standard checkout with `actions/setup-node@v4` caching npm packages.
-2. **Dependency Installation**: `npm ci` ensures exact version lockfile adherence.
-3. **Build Execution**: Runs pure `npm run build` (`next build`) generating `/out`.
-4. **Artifact Upload**: `actions/upload-pages-artifact@v3` target `./out`.
-5. **Deployment**: `actions/deploy-pages@v4` deploys to the `github-pages` environment.
-
-> [!WARNING]
-> **Action Hook Overrides**: Never re-inject `static_site_generator: next` into `actions/configure-pages`. It injects conflicting Next.js wrappers that overwrite local `next.config.ts` static export directives and cause `404 Not Found` deployment failures.
-
-### 4.2 UI & Browser Verification Protocol
-
-When creating or modifying components:
-1. **Add UI Primitives**: Use `npx shadcn@latest add [component]` if a new primitive is required.
-2. **Component Location**: Place new visual sections in `src/components/sections/`.
-3. **Animations**: Use `framer-motion` entrance animations (`initial`, `whileInView`, `viewport={{ once: true }}`).
-4. **Data Binding**: Bind component props exclusively to `src/data/subject.ts`.
-5. **Verification**:
-   - Execute static compilation: `npm run build`
-   - Test development server: `npm run dev`
-   - Run browser subagent inspection at `http://localhost:3000` to verify responsiveness and animation triggering.
-
-### 4.3 Troubleshooting & Gotchas
-
-#### Hydration & SSR Conflicts with Static Export
-If incorporating dynamic third-party libraries (e.g., canvas renderers, graph packages, Lottie) that reference `window` or `document`, use Next.js dynamic imports with `ssr: false`:
-
-```typescript
-import dynamic from 'next/dynamic';
-
-const DynamicChart = dynamic(
-  () => import('@/components/sections/DynamicChart'),
-  { ssr: false }
-);
-```
-
-### 4.4 Web Analytics & Telemetry Protocol (Google Analytics GA4)
-
-For continuous traffic observation, visitor demographics, and user behavior analysis, the portfolio integrates **Google Analytics 4 (GA4)** under the unified GitHub Pages account hierarchy.
-
-#### Account & Property Topology
-- **GA Account Name**: `Github Pages` (or `Antigravity GA Account`)
-- **GA Account ID**: `389930119`
-- **GA4 Property Name**: `merolhack.github.io`
-- **GA4 Property ID**: `531281877`
-
-#### Web Data Stream Specification
-- **Stream Name**: `merolhack.github.io`
-- **Stream URL**: `https://merolhack.github.io`
-- **Stream ID**: `15862982513`
-- **Measurement ID**: `G-8STYZ8GZRJ`
-
-#### Integration Pattern in Next.js App Router
-Tracking tags are injected directly into `src/app/layout.tsx` via Next.js `next/script` using the `afterInteractive` loading strategy:
-```tsx
-import Script from "next/script";
-
-// Inside RootLayout <head>:
-<Script
-  src="https://www.googletagmanager.com/gtag/js?id=G-8STYZ8GZRJ"
-  strategy="afterInteractive"
-/>
-<Script id="google-analytics" strategy="afterInteractive">
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-8STYZ8GZRJ');
-  `}
-</Script>
-```
-- **Zero FCP Degradation**: Deferred execution prevents thread blocking during First Contentful Paint.
-- **Static Export Conformance**: Compatible with `output: 'export'` without requiring dynamic SSR middleware.
-
----
-
-## 5. Project Version History & Audit Log
-
-### `[v1.0.6]` - 2026-09-28
-- **Added**: Google Analytics 4 (GA4) integration under the `Github Pages` account (`389930119`), property `merolhack.github.io` (`531281877`), and web stream `merolhack.github.io` (`G-8STYZ8GZRJ`, Stream ID: `15862982513`).
-- **Updated**: Injected Next.js `next/script` gtag telemetry scripts in `src/app/layout.tsx` with `afterInteractive` strategy.
-- **Ingested**: Documented GA4 telemetry specifications into `LLM_WIKI.md` Section 4.4.
-- **Verified**: Production build (`npm run build`) validated with static export (`output: 'export'`).
-
-### `[v1.0.5]` - 2026-09-23
-- **Updated**: Formalized Secondary Model Delegation Protocol for Ollama: Multi-tier cascade prioritizing `gemma4:cloud` whenever weekly usage quota is available (< 90%), falling back automatically to local `qwen3:8b-8k`.
-- **Mandate**: Synchronized `AGENTS.md`, `LLM_WIKI.md`, and global Antigravity instructions (`GEMINI.md`) to guarantee zero primary agent token waste on mechanical tasks.
-- **Verified**: Verified fallback execution and status via `call_mcp_tool` &rarr; `ollama-local` &rarr; `consultar_modelo_local`.
-
-### `[v1.0.4]` - 2026-09-18
-- **Added**: Formalized Local Model Delegation Protocol for Ollama (`qwen3:8b` / `qwen3:8b-8k`) and the `ollama-local` MCP server.
-- **Mandate**: Enforced mandatory ("MUST") delegation matrix for routine, mechanical, low-risk tasks to conserve cloud API tokens and minimize latency.
-- **Verified**: Active connection and sub-second inference test via `call_mcp_tool` &rarr; `ollama-local` &rarr; `consultar_modelo_local`.
-
-### `[v1.0.3]` - 2026-02-25
-- **Added**: `PortfolioDetails.tsx` component showcasing autonomous agentic portfolio engineering.
-- **Added**: Injected 5 active repositories (`gazeti-healthcheck-scripts`, `sbc-derqui-opensips`, `oml-daemon-script`, `cpi-visualization-app`, `oml-config-prod`) into `src/data/subject.ts`.
-- **Verified**: Autonomous deployment to GitHub Pages via CD pipeline.
-
-### `[v1.0.2]` - 2026-02-25
-- **Added**: Codified `AGENTS.md` specifying static export mandates, Vibe Coding directives, and single source of truth rules.
-
-### `[v1.0.1]` - 2026-02-25
-- **Fixed**: Solved Next.js 15+ GitHub Pages build conflict by stripping `static_site_generator: next` wrapper from `.github/workflows/deploy.yml`.
-
-### `[v1.0.0]` - 2026-02-25
-- **Initialized**: Scaffolded Next.js 16/15 App Router portfolio with Tailwind CSS v4, `shadcn/ui`, Framer Motion, and `output: 'export'`.
-- **Initialized**: Created `src/data/subject.ts` master data bridge.
-- **Initialized**: Built core sections (`Hero`, `ExecutiveSummary`, `SkillsMatrix`, `Timeline`, `DigitalFootprint`, `Footer`).
-
----
-
-## 6. Secondary Model Delegation Protocol (Ollama: Gemma4 Cloud / Qwen3 Local)
-
-### 6.1 Multi-Tier Delegation Architecture & Model Hierarchy
-Whenever a task is mechanical, repetitive, or low-risk, agents **MUST** delegate execution via the MCP tool `consultar_modelo_local` (`ollama-local` server) rather than consuming primary agent tokens.
-
-The delegation cascade operates strictly in the following priority order:
-1. **Priority 1 — `gemma4:cloud`**: Primary choice whenever weekly usage quota is available (< 90%). Utilizes Google DeepMind Gemma 4 (31B) via Ollama Cloud API for higher structured reasoning, precision, and zero local hardware load.
-2. **Priority 2 (Fallback) — `qwen3:8b-8k`**: Mandatory local fallback invoked automatically when weekly cloud quota is exhausted (>= 90%) or when cloud connectivity fails. Runs 100% locally on-device.
-
-### 6.2 Technical Profiles of Secondary Models
-
-#### A. Priority 1 Cloud Model: `gemma4:cloud`
-- **Developer**: Google DeepMind (Gemma 4 series).
-- **Environment**: Ollama Cloud API endpoint (`gemma4:cloud`).
-- **Scale**: ~31 Billion parameters.
-- **Quota Gatekeeper**: Checked via Ollama weekly usage endpoint. If usage is < 90%, all delegated requests are routed here first.
-- **Capabilities**: Complex structured text, precise docstring formatting, high-level code transformations, and zero host VRAM consumption.
-
-#### B. Fallback Local Model: `qwen3:8b-8k`
-- **Developer**: Alibaba Cloud (Qwen Team).
-- **Architecture**: Dense decoder-only Transformer with **8.2 Billion parameters** (8.2B).
-- **Local Ollama Environment**:
-  - **Local Tag**: `qwen3:8b-8k` (base model `qwen3:8b`).
-  - **Quantization**: `Q4_K_M` in GGUF format (~5.22 GB memory/VRAM footprint).
-  - **Context Window**: Native support up to **40,960 tokens** (optimized active inference window configured to 8,192 tokens for rapid local responses).
-  - **Capabilities**: Native function calling (tools), chain-of-thought reasoning (*thinking*), robust code generation, and strong bilingual (Spanish/English) fluency.
-- **MCP Server Configuration**:
-  - **Server Name**: `ollama-local`
-  - **Bridge Script**: `C:\Users\lenin\Documents\AIDevelopment\ollama\ollama_mcp_server.py`
-  - **Tool**: `consultar_modelo_local` (HTTP endpoint `http://localhost:11434/v1/chat/completions`).
-
-### 6.3 Tool Verification & Cascading Behavior
-The bridge script `ollama_mcp_server.py` transparently performs the quota pre-flight check. If quota is healthy, `gemma4:cloud` executes; if quota is exhausted or unreachable, it falls back to `qwen3:8b-8k` locally with sub-second latency:
-> *"Soy Qwen, un modelo de lenguaje desarrollado por Tongyi Lab, capaz de responder preguntas, crear contenido y ayudar en diversas tareas."*
-
-### 6.4 Mandatory Delegation Matrix ("MUST")
-All agents interacting with this repository **MUST** adhere to the following task assignment matrix:
-
-| Tipo de Tarea | Acción | Herramienta Ejecutora |
-| :--- | :---: | :--- |
-| **Docstrings, comentarios y anotaciones de tipo** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
-| **Boilerplate repetitivo y formateo de estructuras** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
-| **Limpieza de Markdown, regex y parseo básico** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
-| **Traducciones y resúmenes mecánicos aislados** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
-| **Consultas puntuales sin contexto multi-archivo** | **MUST DELEGATE** | `ollama-local` &rarr; `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) |
-| **Decisiones de arquitectura y diseño de sistemas** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
-| **Refactorizaciones que tocan múltiples archivos** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
-| **Operaciones de Git, CI/CD y despliegues** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
-| **Políticas de AdSense, seguridad y auditorías** | **DO NOT DELEGATE** | Agente Principal (Antigravity) |
-
----
-
-## 7. LLM Wiki Maintenance Protocol
-
-To maintain the integrity and compounding value of this LLM Wiki:
-
-1. **Ingest Phase**: Whenever new source files, architectural rules, or deployment workflows are added to the workspace, an AI agent must read the new sources and update `LLM_WIKI.md`.
-2. **Synthesis & Deduplication**: Do not append duplicate notes. Merge new insights into the relevant modules (e.g., update [Section 3](#3-subject--enterprise-domain-model) for background changes, [Section 4](#4-operational-playbooks--deployment) for pipeline changes, [Section 6](#6-local-model-delegation-protocol-ollama--qwen38b) for local model delegation updates).
-3. **Cross-Link Integrity**: Maintain relative file links (e.g., `file:///...`) and internal section anchors (`#section-id`).
-4. **Wiki Health Check / Linting**:
-   - Check that all listed dependencies in Section 2 match `package.json`.
-   - Verify that all active components in `src/components/sections/` are indexed.
-   - Confirm that deployment pipeline steps in Section 4 reflect `.github/workflows/deploy.yml`.
+## 🛠️ Operational Protocol for AI Agents
+To ingest new information or query the wiki, always follow the rules defined in [`wiki/schema.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/schema.md).
