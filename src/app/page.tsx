@@ -7,6 +7,7 @@ import { SkillsMatrix } from "@/components/sections/SkillsMatrix";
 import { ArchitectureDiagram } from "@/components/sections/ArchitectureDiagram";
 import { Timeline } from "@/components/sections/Timeline";
 import { DigitalFootprint } from "@/components/sections/DigitalFootprint";
+import { PersonalProjects } from "@/components/sections/PersonalProjects";
 import { FeaturedProject } from "@/components/sections/FeaturedProject";
 import { PortfolioDetails } from "@/components/sections/PortfolioDetails";
 import { Footer } from "@/components/sections/Footer";
@@ -23,6 +24,7 @@ export default function Home() {
       <ArchitectureDiagram />
       <Timeline />
       <DigitalFootprint />
+      <PersonalProjects />
       <FeaturedProject />
       <PortfolioDetails />
       <Footer />

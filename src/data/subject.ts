@@ -190,6 +190,42 @@ export const subjectData = {
             isPrivate: true
         }
     ],
+    personalProjects: [
+        {
+            id: "dqro",
+            title: "DQRO.mx",
+            tagline: "Directorio Empresarial y Comercial de Querétaro",
+            description: "Directorio empresarial y comercial en Querétaro con verificación e.firma, mapas interactivos, geolocalización y auxilio vial inmediato en los 18 municipios del estado.",
+            detailedDescription: "Plataforma web de alta velocidad desarrollada sobre WordPress Full Site Editing (FSE) con motor nativo a medida (dqro-core-engine), arquitectura PHP 8.3 + MariaDB, despliegue atómico CI/CD vía SFTP y optimización estricta para Core Web Vitals (PageSpeed 95+ en móviles).",
+            url: "https://dqro.mx/",
+            image: "/images/projects/dqro.png",
+            badges: ["Directorio Empresarial", "e.firma & Geo", "Querétaro"],
+            highlights: [
+                "Buscador geolocalizado en los 18 municipios de Querétaro",
+                "Módulo de Auxilio Vial Inmediato (< 15 km)",
+                "Verificación comercial con e.firma y contacto directo",
+                "Cumplimiento de accesibilidad WCAG 2.1 AA y Mobile PageSpeed 95+"
+            ],
+            tech: ["WordPress FSE", "PHP 8.3", "dqro-core-engine", "MariaDB", "SFTP CI/CD", "SEO & Schema.org"]
+        },
+        {
+            id: "freelancemexico",
+            title: "Freelance México",
+            tagline: "Plataforma y Comunidad para Freelancers en México",
+            description: "Ecosistema digital y herramientas especializadas para trabajadores independientes en México: calculadoras de tarifas por hora, simuladores fiscales RESICO, contratos civiles blindados y guías tributarias del SAT.",
+            detailedDescription: "Plataforma comunitaria y de recursos para independientes desarrollada en WordPress y HivePress con suite de herramientas interactivas personalizadas (fm-core-engine). Facilita la transición profesional y el cumplimiento tributario ante el SAT de forma transparente y gratuita.",
+            url: "https://freelancemexico.com.mx/",
+            badges: ["Plataforma Comunitaria", "Herramientas Fiscales", "México"],
+            image: "/images/projects/freelancemexico.png",
+            highlights: [
+                "Simulador fiscal RESICO y cálculo de retenciones ISR / IVA",
+                "Calculadora de tarifa por hora y costos fijos",
+                "Generador de contratos civiles de prestación de servicios",
+                "Directorio de recursos y empleo remoto para independientes"
+            ],
+            tech: ["WordPress", "HivePress", "fm-core-engine", "PHP 8.3", "Tailwind CSS", "Fiscal Tooling"]
+        }
+    ],
     featuredProject: {
         title: "MACH Playbook",
         subtitle: "A comprehensive guide to building modern, composable architectures.",
