@@ -6,6 +6,26 @@ Before modifying the codebase, ingest this document to maintain architectural pu
 
 ---
 
+## ⚡ MANDATORY OPERATIONAL RULES FOR ALL AGENTS [REQUIRED]
+
+All autonomous agents (including Google Antigravity) interacting with this repository **MUST** adhere to these 3 core mandates on every prompt and task:
+
+1. **FIRST USE LLM WIKI & UPDATE MODULARLY AT THE END [MANDATORY]**:
+   - **Knowledge First**: Before inspecting or modifying code, always consult the **LLM Wiki** ([`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md)) to understand the system architecture, domain data, and operational constraints without re-reading the entire codebase.
+   - **Modular End-of-Task Sync**: At the conclusion of **every** coding or configuration task, the agent **MUST** update the LLM Wiki in a modular fashion: update the relevant topic page in `wiki/`, refresh [`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md) if new concepts arose, and append an entry to [`wiki/log.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/log.md).
+
+2. **CODEBASE MEMORY KNOWLEDGE GRAPH [MANDATORY]**:
+   - **Target Project**: `home-merolhack-fl-merolhack.github.io` (`/home/merolhack/fl/merolhack.github.io`).
+   - **Tool Priority**: ALWAYS query `codebase-memory` MCP tools (`search_graph`, `query_graph`, `trace_path`, `get_code_snippet`, `detect_changes`) for code discovery, symbols, callers, and route references BEFORE falling back to broad text search or grep.
+   - **Sync**: Verify index freshness with `index_status(project="home-merolhack-fl-merolhack.github.io")` and run `detect_changes` after modifications.
+
+3. **OLLAMA-LOCAL MODELS TO SAVE TOKENS [MANDATORY]**:
+   - Whenever a task is mechanical, repetitive, or low-risk (docstrings, boilerplate, repetitive markup, JSON formatting, simple regex, single-file translations), agents **MUST** delegate execution via the `consultar_modelo_local` tool (`ollama-local` server).
+   - **Model Cascade**: Priority 1 `gemma4:cloud` (when weekly quota < 90%), falling back automatically to local `qwen3:8b-8k`.
+   - Never waste primary agent tokens on routine formatting or boilerplate.
+
+---
+
 ## 1. Architectural Mandates
 
 ### 1.1 Strict Static Export (GitHub Pages)
@@ -68,15 +88,17 @@ const MyHeavyComponent = dynamic(() => import('@/components/Heavy'), { ssr: fals
 
 ## 6. Codebase Context & Tool Usage Rules
 
-1. **Prioritize Knowledge Graph:** 
-   - ALWAYS query `codebase-memory` MCP tools (`search_graph`, `query_graph`, `trace`, `impact_analysis`) BEFORE reading large source files or performing global greps.
-   - Use `index_status` and `detect_changes` to verify project graph freshness before starting structural tasks.
+1. **Prioritize Knowledge Graph (`codebase-memory`):** 
+   - **Target Project:** `home-merolhack-fl-merolhack.github.io` (Root: `/home/merolhack/fl/merolhack.github.io`).
+   - ALWAYS query `codebase-memory` MCP tools (`search_graph`, `query_graph`, `trace_path`, `get_code_snippet`, `get_architecture`) BEFORE reading large source files or performing global ripgrep.
+   - Use `index_status(project="home-merolhack-fl-merolhack.github.io")` and `detect_changes` to verify project graph freshness before starting structural tasks.
 
-2. **LLM Wiki & Architecture Alignment:**
-   - Always cross-reference architectural decisions with `LLM_WIKI.md` and validate code relationships using graph node signatures.
+2. **First Use LLM Wiki & End-of-Task Modular Update:**
+   - Always consult the **LLM Wiki** ([`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md)) first for system understanding and architectural patterns.
+   - At the completion of every task, update the wiki in a modular way (update topic pages in `wiki/`, index in `wiki/index.md`, and log in `wiki/log.md`).
 
 3. **Post-Task Sync:**
-   - After completing edits, run `detect_changes` to ensure the codebase graph reflects all newly created or modified functions/routes.
+   - After completing edits, run `detect_changes` on project `home-merolhack-fl-merolhack.github.io` to ensure the knowledge graph tracks all newly created or modified functions/routes.
 
 ---
 

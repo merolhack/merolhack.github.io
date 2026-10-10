@@ -33,6 +33,26 @@ graph LR
 
 ---
 
+## ⚡ MANDATORY OPERATIONAL RULES FOR ALL AGENTS [REQUIRED]
+
+All autonomous agents (including Google Antigravity) interacting with this repository **MUST** adhere to these 3 core mandates on every prompt and task:
+
+1. **FIRST USE LLM WIKI & UPDATE MODULARLY AT THE END [MANDATORY]**:
+   - **Knowledge First**: Before inspecting or modifying code, always consult the **LLM Wiki** ([`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md)) to understand the system architecture, domain data, and operational constraints without re-reading the entire codebase.
+   - **Modular End-of-Task Sync**: At the conclusion of **every** coding or configuration task, the agent **MUST** update the LLM Wiki in a modular fashion: update the relevant topic page in `wiki/`, refresh [`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md) if new concepts arose, and append an entry to [`wiki/log.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/log.md).
+
+2. **CODEBASE MEMORY KNOWLEDGE GRAPH [MANDATORY]**:
+   - **Target Project**: `home-merolhack-fl-merolhack.github.io` (`/home/merolhack/fl/merolhack.github.io`).
+   - **Tool Priority**: ALWAYS query `codebase-memory` MCP tools (`search_graph`, `query_graph`, `trace_path`, `get_code_snippet`, `detect_changes`) for code discovery, symbols, callers, and route references BEFORE falling back to broad text search or grep.
+   - **Sync**: Verify index freshness with `index_status(project="home-merolhack-fl-merolhack.github.io")` and run `detect_changes` after modifications.
+
+3. **OLLAMA-LOCAL MODELS TO SAVE TOKENS [MANDATORY]**:
+   - Whenever a task is mechanical, repetitive, or low-risk (docstrings, boilerplate, repetitive markup, JSON formatting, simple regex, single-file translations), agents **MUST** delegate execution via the `consultar_modelo_local` tool (`ollama-local` server).
+   - **Model Cascade**: Priority 1 `gemma4:cloud` (when weekly quota < 90%), falling back automatically to local `qwen3:8b-8k`.
+   - Never waste primary agent tokens on routine formatting or boilerplate.
+
+---
+
 ## 🚀 Quick Navigation
 
 AI agents and human developers should use [`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md) as the primary index rather than reading the entire codebase:

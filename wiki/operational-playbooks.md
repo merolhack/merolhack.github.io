@@ -88,3 +88,19 @@ When developing or modifying UI components:
   ```bash
   rm -f 'public/filename:Zone.Identifier'
   ```
+
+---
+
+## 4. Autonomous Agent Operational Protocol [MANDATORY]
+
+All autonomous agents working on this repository MUST strictly execute according to the following 3 rules:
+
+1. **LLM Wiki Knowledge & End-of-Task Modular Sync**:
+   - Always consult [`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md) first to extract architectural patterns, constraints, and data mappings.
+   - At the completion of every task, update the LLM Wiki modularly (update the corresponding `wiki/*.md` file, update `wiki/index.md` if new pages were added, and append to `wiki/log.md`).
+2. **Codebase Memory Graph Navigation**:
+   - Query `codebase-memory` MCP tools using project `home-merolhack-fl-merolhack.github.io` (`/home/merolhack/fl/merolhack.github.io`).
+   - Prioritize `search_graph`, `trace_path`, `query_graph`, and `get_code_snippet` over raw text grepping.
+3. **Ollama Secondary Model Delegation to Save Tokens**:
+   - Delegate mechanical, repetitive, and low-risk tasks (boilerplate, comments, simple formatting) to `consultar_modelo_local` (`ollama-local`: `gemma4:cloud` priority, `qwen3:8b-8k` local fallback).
+   - Reserve primary agent tokens for multi-file architecture, design decisions, and Git/CI operations.

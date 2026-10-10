@@ -6,6 +6,13 @@
 
 ## Release Milestones & Architectural History
 
+### `[v1.0.8]` - 2026-10-09
+- **Ingested**: Formalized 3 mandatory operational directives across `AGENTS.md` and the modular LLM Wiki:
+  1. Mandatory LLM Wiki first consultation and modular end-of-task sync (`wiki/` directory).
+  2. Mandatory Codebase Memory knowledge graph utilization targeting project `home-merolhack-fl-merolhack.github.io` (`/home/merolhack/fl/merolhack.github.io`).
+  3. Mandatory delegation of routine and mechanical tasks to `ollama-local` models (`gemma4:cloud` &rarr; `qwen3:8b-8k`) to save tokens.
+- **Synchronized**: Updated `AGENTS.md`, `LLM_WIKI.md`, `wiki/schema.md`, `wiki/operational-playbooks.md`, `wiki/log.md`, and `wiki/audit-history.md`.
+
 ### `[v1.0.7]` - 2026-10-09
 - **Added**: Google Search Console site verification HTML file (`public/google7d4ec8c5344a17de.html`) enabling search indexing verification on `https://merolhack.github.io/`.
 - **Added**: Personal Projects section (`src/components/sections/PersonalProjects.tsx`) featuring:

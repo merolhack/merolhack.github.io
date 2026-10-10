@@ -45,7 +45,27 @@ flowchart TD
 
 ---
 
-## 2. The Three Layers
+## 2. Mandatory Agent Workflow Cycle [REQUIRED]
+
+Every autonomous agent working on this repository MUST execute the following 5-phase cycle on every task:
+
+```mermaid
+flowchart LR
+    Step1["1. LLM Wiki First<br/>(Read wiki/index.md)"] --> Step2["2. Codebase Memory<br/>(Graph: home-merolhack-fl...)"]
+    Step2 --> Step3["3. Model Delegation<br/>(ollama-local to save tokens)"]
+    Step3 --> Step4["4. Execution & Build<br/>(lint, build, verify)"]
+    Step4 --> Step5["5. Modular Wiki Sync<br/>(update wiki/ at task end)"]
+```
+
+1. **Step 1 — LLM Wiki First**: Before reading files or guessing architecture, consult [`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md) and the targeted wiki pages.
+2. **Step 2 — Codebase Memory Graph**: ALWAYS prioritize `codebase-memory` MCP tools targeting project `home-merolhack-fl-merolhack.github.io` (`/home/merolhack/fl/merolhack.github.io`) for function, route, class, and caller discovery before using ripgrep or reading raw files.
+3. **Step 3 — Ollama-Local Delegation**: For mechanical, repetitive, and low-risk tasks (boilerplate, docstrings, formatting, basic regex), ALWAYS delegate to secondary models via `consultar_modelo_local` (`gemma4:cloud` &rarr; `qwen3:8b-8k`) to conserve primary tokens.
+4. **Step 4 — Implementation & Build Validation**: Execute code edits and validate locally with `npm run lint` and `npm run build` (`output: 'export'`).
+5. **Step 5 — Modular End-of-Task Update**: Conclude every task by updating the affected modular wiki pages, updating [`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md), and appending an entry to [`wiki/log.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/log.md).
+
+---
+
+## 3. The Three Layers
 
 1. **Raw Sources (Immutable)**: The actual code, configuration, assets, and documentation files in the repository. The LLM reads from them but treats them as the ground truth.
 2. **The Wiki (`wiki/`)**: Modular, interlinked Markdown files synthesizing the architecture, decisions, domain model, and operational procedures.
@@ -53,7 +73,7 @@ flowchart TD
 
 ---
 
-## 3. Operational Protocols
+## 4. Operational Protocols
 
 ### A. Ingestion Protocol (`ingest`)
 When a new feature, source file, library, or architectural rule is added:

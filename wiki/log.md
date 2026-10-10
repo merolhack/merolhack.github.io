@@ -4,6 +4,14 @@
 
 ---
 
+## [2026-10-09] ingest | Mandatory Agent Operational Directives
+- **Operation**: Ingested and codified mandatory operational requirements across `AGENTS.md` and the modular LLM Wiki.
+- **Mandates Enforced**:
+  1. Always consult LLM Wiki first ([`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md)) and perform modular sync at task end.
+  2. Always use `codebase-memory` MCP graph for project `home-merolhack-fl-merolhack.github.io` (`/home/merolhack/fl/merolhack.github.io`).
+  3. Always delegate routine, low-risk, mechanical tasks to `ollama-local` models (`gemma4:cloud` &rarr; `qwen3:8b-8k`) to conserve tokens.
+- **Files Synchronized**: `AGENTS.md`, `LLM_WIKI.md`, `wiki/schema.md`, `wiki/operational-playbooks.md`, `wiki/log.md`.
+
 ## [2026-10-09] ingest | Karpathy Modular LLM Wiki Migration
 - **Operation**: Transformed monolithic `LLM_WIKI.md` into modular Karpathy architecture.
 - **Created**:
