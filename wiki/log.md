@@ -4,6 +4,16 @@
 
 ---
 
+## [2026-10-26] ingest | Cadensa Web Production Platform Integration
+- **Operation**: Ingested and integrated the new production project Cadensa (`https://cadensa-web.pages.dev/`) into personal projects showcase and repository catalog.
+- **Sources Ingested**:
+  - `home-merolhack-fl-cadensa-web` (`/home/merolhack/fl/cadensa-web`) via `codebase-memory`.
+  - `https://cadensa-web.pages.dev/`: Live platform inspection and browser subagent screenshot.
+  - `https://github.com/merolhack/cadensa-web`: Public repository metadata.
+- **Screenshot Generated**: `public/images/projects/cadensa.png` (1280x800 optimized PNG).
+- **Data Updated**: `src/data/subject.ts` (`personalProjects` and `latestRepositories` arrays).
+- **Documentation Updated**: `wiki/projects-and-repositories.md`, `wiki/index.md`, `wiki/design-system.md`, `LLM_WIKI.md`.
+
 ## [2026-10-09] ingest | Mandatory Agent Operational Directives
 - **Operation**: Ingested and codified mandatory operational requirements across `AGENTS.md` and the modular LLM Wiki.
 - **Mandates Enforced**:

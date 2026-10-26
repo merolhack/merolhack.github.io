@@ -146,6 +146,13 @@ export const subjectData = {
     },
     latestRepositories: [
         {
+            name: "cadensa-web",
+            description: "Plataforma clínica de entrenamiento rítmico del habla (Syllable-Timed Speech) con Web Audio API, detección de voz, Zero-Trust RLS en Supabase y CI/CD en Cloudflare Pages.",
+            url: "https://github.com/merolhack/cadensa-web",
+            websiteUrl: "https://cadensa-web.pages.dev/",
+            isPrivate: false
+        },
+        {
             name: "pressvitals-site-auditor",
             description: "A headless-first WordPress diagnostic engine featuring 22+ proactive probes for performance, security, and DB health — extensible to 48+ via REST API and custom filters.",
             url: "https://github.com/merolhack/pressvitals-site-auditor",
@@ -191,6 +198,23 @@ export const subjectData = {
         }
     ],
     personalProjects: [
+        {
+            id: "cadensa",
+            title: "Cadensa",
+            tagline: "Encuentra el ritmo de tu voz — Entrenamiento de Habla Rítmica y Fluidez Vocal",
+            description: "Plataforma clínica diaria de entrenamiento rítmico del habla diseñada para superar bloqueos y reducir la tartamudez mediante técnicas comprobadas como Syllable-Timed Speech (STS), respiración guiada y retroalimentación auditiva en tiempo real.",
+            detailedDescription: "Arquitectura Jamstack desacoplada desarrollada con Next.js 16 (App Router), TypeScript y Tailwind CSS v4, desplegada globalmente en Cloudflare Pages. Incorpora motor de metrónomo con Web Audio API de baja latencia, detección de voz en navegador, base de datos Supabase PostgreSQL con seguridad Zero-Trust RLS, gamificación con rachas diarias y reportes clínicos.",
+            url: "https://cadensa-web.pages.dev/",
+            image: "/images/projects/cadensa.png",
+            badges: ["Salud Vocal & Fluidez", "Syllable-Timed Speech", "Cloudflare & Supabase"],
+            highlights: [
+                "Motor de metrónomo interactivo y feedback visual con Web Audio API de baja latencia",
+                "Entrenamiento clínico basado en Syllable-Timed Speech (STS), Box Breathing y técnicas de modificación",
+                "Detección y segmentación silábica de voz en navegador para evaluación de sincronía rítmica",
+                "Despliegue estático global en Cloudflare Pages con backend Zero-Trust RLS en Supabase"
+            ],
+            tech: ["Next.js 16", "TypeScript", "Tailwind CSS v4", "Web Audio API", "Supabase", "Cloudflare Pages", "Vitest & Cucumber"]
+        },
         {
             id: "dqro",
             title: "DQRO.mx",

@@ -8,7 +8,22 @@
 
 These live production platforms were architected and launched independently by Lenin Meza, demonstrating full-stack engineering, performance optimization, and domain-specific utility.
 
-### A. DQRO.mx — Directorio Empresarial y Comercial de Querétaro
+### A. Cadensa — Entrenamiento de Habla Rítmica y Fluidez Vocal
+- **Live URL**: [`https://cadensa-web.pages.dev/`](https://cadensa-web.pages.dev/)
+- **Screenshot Asset**: [`/images/projects/cadensa.png`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/public/images/projects/cadensa.png)
+- **Tagline**: Encuentra el ritmo de tu voz — Plataforma clínica diaria de entrenamiento rítmico del habla.
+- **Architectural Overview**:
+  - Modern Jamstack / SPA architecture built with **Next.js 16 (App Router)**, **TypeScript 5**, and **Tailwind CSS v4**, deployed globally to Cloudflare Pages edge CDN.
+  - Back-end powered by **Supabase (PostgreSQL 15+)** with strict **Zero-Trust Row Level Security (RLS)** and reactive PL/pgSQL profile triggers.
+  - Interactive low-latency **Web Audio API** metronome engine combined with browser-based voice detection and syllable segmentation for real-time rhythmic feedback.
+  - Full BDD test suite with Cucumber.js (Gherkin in Spanish) and unit tests with Vitest 4.
+- **Core Platform Features**:
+  - Clinical rhythm training based on **Syllable-Timed Speech (STS)** and **Box Breathing** (respiración cuadrada).
+  - Voice detection evaluating real-time synchronization against metronome beats.
+  - Daily streaks, gamification with badge evaluation, and automated clinical progress reports.
+  - Global edge delivery with zero server maintenance overhead.
+
+### B. DQRO.mx — Directorio Empresarial y Comercial de Querétaro
 - **Live URL**: [`https://dqro.mx/`](https://dqro.mx/)
 - **Screenshot Asset**: [`/images/projects/dqro.png`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/public/images/projects/dqro.png)
 - **Tagline**: Directorio empresarial y comercial en Querétaro con verificación e.firma y contacto directo.
@@ -21,7 +36,7 @@ These live production platforms were architected and launched independently by L
   - Real-time GPS-assisted **Auxilio Vial Inmediato** module (< 15 km) for tow trucks (grúas), mechanics, and tire repair services.
   - Official business verification with SAT e.firma compliance.
 
-### B. Freelance México — Plataforma & Comunidad para Independientes
+### C. Freelance México — Plataforma & Comunidad para Independientes
 - **Live URL**: [`https://freelancemexico.com.mx/`](https://freelancemexico.com.mx/)
 - **Screenshot Asset**: [`/images/projects/freelancemexico.png`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/public/images/projects/freelancemexico.png)
 - **Tagline**: La Plataforma y Comunidad para Freelancers en México.
@@ -54,6 +69,7 @@ These live production platforms were architected and launched independently by L
 
 | Repository | Visibility | Tech Stack | Description |
 | :--- | :---: | :--- | :--- |
+| [`cadensa-web`](https://github.com/merolhack/cadensa-web) | Public | Next.js 16, Supabase, Web Audio API | Plataforma clínica de entrenamiento rítmico del habla (Syllable-Timed Speech) con metrónomo Web Audio, Zero-Trust RLS y despliegue en Cloudflare Pages ([cadensa-web.pages.dev](https://cadensa-web.pages.dev/)). |
 | [`pressvitals-site-auditor`](https://github.com/merolhack/pressvitals-site-auditor) | Public | PHP 8.3, REST API | Headless-first WordPress diagnostic engine with 22+ proactive probes for database, performance, and security health ([WordPress Plugin Directory](https://wordpress.org/plugins/pressvitals-site-auditor/)). |
 | [`mach-playbook.github.io`](https://github.com/mach-playbook/mach-playbook.github.io) | Public | Markdown, Static Web | Interactive web companion for the MACH Playbook ([mach-playbook.github.io](https://mach-playbook.github.io/)). |
 | [`cpi-visualization-app`](https://github.com/merolhack/cpi-visualization-app) | Public | Next.js, Supabase, D3.js | Interactive web analytics dashboard visualizing consumer price indices with dynamic D3 charts. |

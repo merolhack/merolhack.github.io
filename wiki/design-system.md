@@ -60,5 +60,5 @@ A floating pill header fixed at `top-4` with an adaptive scroll threshold:
   - `#skills` &rarr; Technical Skills Matrix
   - `#architecture` &rarr; Enterprise System Topology Diagram
   - `#timeline` &rarr; Career Progression Timeline
-  - `#projects` &rarr; Personal Projects Showcase (DQRO.mx & Freelance México)
-  - `#repositories` &rarr; Repositories & Agentic SDLC Process
+  - `#projects` → Personal Projects Showcase (Cadensa, DQRO.mx & Freelance México)
+  - `#repositories` → Repositories & Agentic SDLC Process

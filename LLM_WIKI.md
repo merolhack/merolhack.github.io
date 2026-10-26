@@ -64,7 +64,7 @@ AI agents and human developers should use [`wiki/index.md`](file:///Ubuntu-20.04
 
 ### 2. Subject & Domain Knowledge
 - **[Subject Profile: Lenin Meza](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/subject-profile.md)**: 17+ years enterprise timeline, BaaS architecture, Incode biometrics, and competencies.
-- **[Projects, Book & Repositories](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/projects-and-repositories.md)**: Live platforms (DQRO.mx, Freelance México), Amazon KDP Book (314p), and active GitHub repos.
+- **[Projects, Book & Repositories](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/projects-and-repositories.md)**: Live platforms (Cadensa, DQRO.mx, Freelance México), Amazon KDP Book (314p), and active GitHub repos.
 
 ### 3. Operations & Automation
 - **[Telemetry & Search Console](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/telemetry-and-analytics.md)**: Google Analytics GA4 (`G-8STYZ8GZRJ`), Search Console verification file (`google7d4ec8c5344a17de.html`), JSON-LD schema.

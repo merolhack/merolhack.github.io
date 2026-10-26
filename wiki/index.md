@@ -19,7 +19,7 @@
 | Page | Summary | Key Topics |
 | :--- | :--- | :--- |
 | [`subject-profile.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/subject-profile.md) | Biographical profile, 17+ years enterprise career timeline, and skills matrix. | Lenin Meza, BaaS, Incode Biometrics, VoIP GCP, Togaf/Bian |
-| [`projects-and-repositories.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/projects-and-repositories.md) | Production platforms (DQRO.mx, Freelance México), KDP book, and git repos. | Personal Platforms, MACH Playbook (314p), PressVitals, OMniLeads |
+| [`projects-and-repositories.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/projects-and-repositories.md) | Production platforms (Cadensa, DQRO.mx, Freelance México), KDP book, and git repos. | Personal Platforms, MACH Playbook (314p), PressVitals, OMniLeads |
 
 ### 3. Operations, Telemetry & AI Workflows
 | Page | Summary | Key Topics |
