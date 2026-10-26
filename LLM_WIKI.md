@@ -51,6 +51,11 @@ All autonomous agents (including Google Antigravity) interacting with this repos
    - **Model Cascade**: Priority 1 `gemma4:cloud` (when weekly quota < 90%), falling back automatically to local `qwen3:8b-8k`.
    - Never waste primary agent tokens on routine formatting or boilerplate.
 
+4. **MANDATORY COMMIT, PUSH & GITHUB ACTIONS VALIDATION [MANDATORY]**:
+   - **Local Validation First**: Antes de concluir cualquier actividad, el agente **DEBE** validar localmente con `npm run lint` y `npm run build` (garantizando 0 errores y exportación estática Next.js limpia).
+   - **Commit y Push al Repositorio Remoto**: Con la validación local aprobada, el agente **DEBE** ejecutar `git add`, crear un commit bajo el estándar Conventional Commits (`feat:`, `fix:`, `docs:`, etc.) y hacer `git push origin main`.
+   - **Validación del Estado de GitHub Actions**: Posterior al push, el agente **DEBE** verificar el pipeline de GitHub Actions (`gh run list --limit 1` o `gh run watch`) asegurando estado `completed` y conclusión `success`.
+
 ---
 
 ## 🚀 Quick Navigation

@@ -93,7 +93,7 @@ When developing or modifying UI components:
 
 ## 4. Autonomous Agent Operational Protocol [MANDATORY]
 
-All autonomous agents working on this repository MUST strictly execute according to the following 3 rules:
+All autonomous agents working on this repository MUST strictly execute according to the following 4 rules:
 
 1. **LLM Wiki Knowledge & End-of-Task Modular Sync**:
    - Always consult [`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md) first to extract architectural patterns, constraints, and data mappings.
@@ -104,3 +104,7 @@ All autonomous agents working on this repository MUST strictly execute according
 3. **Ollama Secondary Model Delegation to Save Tokens**:
    - Delegate mechanical, repetitive, and low-risk tasks (boilerplate, comments, simple formatting) to `consultar_modelo_local` (`ollama-local`: `gemma4:cloud` priority, `qwen3:8b-8k` local fallback).
    - Reserve primary agent tokens for multi-file architecture, design decisions, and Git/CI operations.
+4. **Mandatory Commit, Push & GitHub Actions Pipeline Check**:
+   - Before ending a task, rigorously validate locally using `npm run lint` and `npm run build` (confirming 0 errors and zero export breakage).
+   - Stage all modified files, commit using Conventional Commits (`feat:`, `fix:`, `docs:`, etc.), and execute `git push origin main`.
+   - Monitor the GitHub Actions deployment workflow via `gh run list --limit 1` or `gh run watch` to confirm the status is `completed` with conclusion `success`. Any failure must be investigated and resolved immediately.

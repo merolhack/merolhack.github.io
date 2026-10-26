@@ -24,6 +24,11 @@ All autonomous agents (including Google Antigravity) interacting with this repos
    - **Model Cascade**: Priority 1 `gemma4:cloud` (when weekly quota < 90%), falling back automatically to local `qwen3:8b-8k`.
    - Never waste primary agent tokens on routine formatting or boilerplate.
 
+4. **MANDATORY COMMIT, PUSH & GITHUB ACTIONS VALIDATION [MANDATORY]**:
+   - **Local Validation First**: Antes de concluir cualquier actividad, el agente **DEBE** validar el proyecto localmente mediante `npm run lint` y `npm run build` (confirmando cero errores y que la exportación estática de Next.js genere las páginas sin fallos).
+   - **Commit y Push al Repositorio Remoto**: Con la validación local aprobada, el agente **DEBE** realizar `git add`, crear un commit bajo el estándar Conventional Commits (`feat:`, `fix:`, `docs:`, etc.) y ejecutar `git push origin main`.
+   - **Validación del Estado de GitHub Actions**: Posteriormente al push, el agente **DEBE** inspeccionar y validar el estado del pipeline de despliegue en GitHub Actions (`gh run list --limit 1` o `gh run watch`) para confirmar que el job concluya con estado `completed` y conclusión `success`. Si el pipeline falla, debe diagnosticarse y corregirse de inmediato.
+
 ---
 
 ## 1. Architectural Mandates
@@ -99,6 +104,11 @@ const MyHeavyComponent = dynamic(() => import('@/components/Heavy'), { ssr: fals
 
 3. **Post-Task Sync:**
    - After completing edits, run `detect_changes` on project `home-merolhack-fl-merolhack.github.io` to ensure the knowledge graph tracks all newly created or modified functions/routes.
+
+4. **Mandatory Commit, Push & GitHub Actions Pipeline Check:**
+   - Always run `npm run lint` and `npm run build` locally before pushing.
+   - Stage all changes, commit using Conventional Commits, and push to `origin/main`.
+   - Monitor `gh run list --limit 1` or `gh run watch` to ensure the GitHub Actions deployment completes with `success`.
 
 ---
 

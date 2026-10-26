@@ -102,9 +102,15 @@ Periodically verify the integrity of the wiki:
 - **Orphan Check**: Ensure every modular page is linked from [`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md).
 - **Log Formatting**: Confirm all entries in [`wiki/log.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/log.md) match the `## [YYYY-MM-DD] action | title` grep-friendly pattern.
 
+### D. Completion & Deployment Protocol (`deploy`)
+Upon concluding any activity, feature addition, or configuration modification:
+1. **Local Validation**: Run `npm run lint` and `npm run build` locally. Both must exit with code 0 and 0 errors.
+2. **Git Commit & Push**: Stage modified files, create a commit following Conventional Commits format, and push to remote (`git push origin main`).
+3. **GitHub Actions Verification**: Run `gh run list --limit 1` or `gh run watch` to confirm the deployment workflow completes with conclusion `success`. Any failure must be remediated before closing the task.
+
 ---
 
-## 4. Page Conventions & Standards
+## 5. Page Conventions & Standards
 - **File Names**: Lowercase kebab-case (e.g. `subject-profile.md`, `model-delegation.md`).
 - **Headers**: Start each file with a clear `# Title`, a short quote/callout block defining its purpose, and links back to the index.
 - **Clickable File Links**: Adhere to markdown links with `file:///` URLs or clean relative paths.

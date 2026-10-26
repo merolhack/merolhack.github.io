@@ -4,6 +4,14 @@
 
 ---
 
+## [2026-10-26] ingest | Mandatory Post-Task Commit, Push & GitHub Actions Validation Rule
+- **Operation**: Enforced strict operational mandate requiring agents to commit, push to remote (`origin/main`), and validate the resulting GitHub Actions deployment status upon finishing any locally-validated activity.
+- **Mandates Enforced**:
+  - Run `npm run lint` and `npm run build` locally before completing.
+  - Execute `git add`, `git commit` (Conventional Commits), and `git push origin main`.
+  - Validate GitHub Actions workflow execution via `gh run list --limit 1` or `gh run watch` ensuring `status: completed` and `conclusion: success`.
+- **Files Synchronized**: `AGENTS.md`, `LLM_WIKI.md`, `wiki/operational-playbooks.md`, `wiki/schema.md`, `wiki/log.md`.
+
 ## [2026-10-26] ingest | Cadensa Web Production Platform Integration
 - **Operation**: Ingested and integrated the new production project Cadensa (`https://cadensa-web.pages.dev/`) into personal projects showcase and repository catalog.
 - **Sources Ingested**:
