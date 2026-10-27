@@ -4,6 +4,14 @@
 
 ---
 
+## [2026-10-26] refactor | Elimination of Root LLM_WIKI.md & Centralization into wiki/
+- **Operation**: Removed legacy root `LLM_WIKI.md` file to strictly enforce that all LLM Wiki knowledge, master catalog, schema, and operational directives reside exclusively within the modular `wiki/` directory.
+- **Key Actions**:
+  - Deleted root `LLM_WIKI.md`.
+  - Upgraded [`wiki/index.md`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/wiki/index.md) to serve as the unified Master Entry, Catalog, and direct host of the 4 Mandatory Operational Rules.
+  - Sincronized cross-references across `wiki/schema.md` and `wiki/log.md`.
+- **Files Touched**: `LLM_WIKI.md` (deleted), `wiki/index.md`, `wiki/log.md`.
+
 ## [2026-10-26] feat | Section Anchor Links, Sitemap.xml & Robots.txt Integration
 - **Operation**: Implemented shareable section anchors, semantic navigation, individual project deep links, sitemap.xml, and robots.txt.
 - **Key Enhancements**:
