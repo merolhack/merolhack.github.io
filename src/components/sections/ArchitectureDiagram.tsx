@@ -6,6 +6,7 @@ import { Cpu, ShieldCheck, Server, PhoneCall, Stethoscope, ChevronRight, CheckCi
 import { subjectData } from "@/data/subject";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { SectionAnchor } from "@/components/ui/SectionAnchor";
 
 const nodeIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   identity: ShieldCheck,
@@ -23,15 +24,16 @@ export function ArchitectureDiagram() {
   const selectedNode = architectureNodes.find((n) => n.id === selectedNodeId) || architectureNodes[0];
 
   return (
-    <section id="architecture" className="py-20 bg-zinc-950 border-t border-zinc-900 relative">
+    <section id="architecture" className="py-20 bg-zinc-950 border-t border-zinc-900 relative scroll-mt-16">
       <div className="container px-4 md:px-6 mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <div className="inline-flex items-center rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-mono font-medium text-indigo-300 backdrop-blur-sm mb-3">
             <Cpu className="mr-1.5 h-3.5 w-3.5 text-indigo-400" />
             <span>Interactive System Topology</span>
           </div>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-zinc-100 mb-3">
-            Enterprise Architecture & Cloud Topology
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-zinc-100 mb-3 flex items-center justify-center gap-1 group/title">
+            <span>Enterprise Architecture & Cloud Topology</span>
+            <SectionAnchor id="architecture" title="Enterprise Architecture" />
           </h2>
           <p className="text-zinc-400 text-sm max-w-2xl mx-auto font-light">
             Interactive breakdown of production systems engineered across Bank-as-a-Service, Identity Verification, and VoIP Cloud switch environments.

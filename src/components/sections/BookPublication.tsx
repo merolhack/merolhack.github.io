@@ -20,6 +20,7 @@ import { subjectData } from "@/data/subject";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { SectionAnchor } from "@/components/ui/SectionAnchor";
 
 const pillarIcons = [Layers, Network, ShieldCheck, Cpu];
 
@@ -28,7 +29,7 @@ export function BookPublication() {
   if (!bookPublication) return null;
 
   return (
-    <section id="book" className="py-24 bg-zinc-950 border-t border-zinc-900 relative overflow-hidden">
+    <section id="book" className="py-24 bg-zinc-950 border-t border-zinc-900 relative overflow-hidden scroll-mt-16">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 -left-40 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -52,9 +53,10 @@ export function BookPublication() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl text-zinc-100 max-w-3xl mx-auto"
+            className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl text-zinc-100 max-w-3xl mx-auto flex items-center justify-center gap-1 group/title"
           >
-            {bookPublication.title}
+            <span>{bookPublication.title}</span>
+            <SectionAnchor id="book" title={bookPublication.title} />
           </motion.h2>
 
           <motion.p

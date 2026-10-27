@@ -4,13 +4,15 @@ import { motion } from "framer-motion";
 import { subjectData } from "@/data/subject";
 import { Card, CardContent } from "@/components/ui/card";
 import { Briefcase } from "lucide-react";
+import { SectionAnchor } from "@/components/ui/SectionAnchor";
 
 export function Timeline() {
   return (
-    <section id="timeline" className="py-20 bg-zinc-950">
+    <section id="timeline" className="py-20 bg-zinc-950 scroll-mt-16">
       <div className="container px-4 md:px-6 mx-auto max-w-4xl relative">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-100 mb-16 text-center">
-          Career Architecture
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-100 mb-16 text-center flex items-center justify-center gap-1 group/title">
+          <span>Career Architecture</span>
+          <SectionAnchor id="timeline" title="Career Architecture" />
         </h2>
         
         {/* Vertical Line */}

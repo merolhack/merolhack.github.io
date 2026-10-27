@@ -37,11 +37,13 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
     setMobileMenuOpen(false);
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, "", href);
     }
   };
 
@@ -61,6 +63,7 @@ export function Navbar() {
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
+              window.history.pushState(null, "", window.location.pathname);
             }}
             className="flex items-center space-x-2 text-zinc-100 font-bold group"
           >
@@ -77,14 +80,15 @@ export function Navbar() {
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
-                <button
+                <a
                   key={item.name}
-                  onClick={() => handleNavClick(item.href)}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className="px-3 py-1.5 rounded-full text-xs font-medium text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/60 transition-all flex items-center space-x-1.5"
                 >
                   <Icon className="w-3.5 h-3.5 text-zinc-500 group-hover:text-indigo-400" />
                   <span>{item.name}</span>
-                </button>
+                </a>
               );
             })}
           </div>
@@ -119,16 +123,17 @@ export function Navbar() {
               {navItems.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <button
+                  <a
                     key={item.name}
-                    onClick={() => handleNavClick(item.href)}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-zinc-300 hover:text-zinc-100 hover:bg-zinc-900 transition-colors text-left"
                   >
                     <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
                       <Icon className="w-4 h-4 text-indigo-400" />
                     </div>
                     <span>{item.name}</span>
-                  </button>
+                  </a>
                 );
               })}
 

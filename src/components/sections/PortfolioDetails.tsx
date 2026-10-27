@@ -2,13 +2,15 @@ import { subjectData } from "@/data/subject";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Bot, Code2, Lock, Globe } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { SectionAnchor } from "@/components/ui/SectionAnchor";
 
 export function PortfolioDetails() {
   return (
-    <section id="repositories" className="py-20 bg-zinc-950 border-t border-zinc-900">
+    <section id="repositories" className="py-20 bg-zinc-950 border-t border-zinc-900 scroll-mt-16">
       <div className="container px-4 md:px-6 mx-auto max-w-6xl">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-100 mb-12 text-center">
-          Architecture & Repositories
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-100 mb-12 text-center flex items-center justify-center gap-1 group/title">
+          <span>Architecture & Repositories</span>
+          <SectionAnchor id="repositories" title="Repositories" />
         </h2>
         
         <div className="grid gap-8 lg:grid-cols-2">

@@ -60,9 +60,24 @@ To claim and manage property ownership for `https://merolhack.github.io/` in Goo
 
 To optimize discovery and indexing by AI crawler agents (Gemini, ChatGPT, Claude, Perplexity) as well as traditional search engines, [`src/app/layout.tsx`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/src/app/layout.tsx) embeds schema markup:
 
-- **Schemas**: `schema.org/Person` and `schema.org/ProfilePage`
+- **Schemas**: `schema.org/Person`, `schema.org/Book`, and `schema.org/ItemList` with `SiteNavigationElement`
 - **Entities Declared**:
   - Full Name: `Lenin Meza`
   - Job Titles: `Software Architect`, `Technical Author`, `Technical Lead`
   - Books Authored: `Playbook de Arquitectura MACH`
   - Canonical Profiles: LinkedIn, GitHub, StackOverflow, Dev.to, Credly
+  - Sitelinks / Section Navigation: Direct anchors for `#summary`, `#book`, `#skills`, `#architecture`, `#timeline`, `#projects`, `#repositories`, `#contact`.
+
+---
+
+## 4. Search Engine Indexing: Sitemap & Robots.txt
+
+To ensure optimal indexing by search engine crawlers and robots:
+
+- **Sitemap Generator**: [`src/app/sitemap.ts`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/src/app/sitemap.ts)
+  - Exports statically to `/out/sitemap.xml` with `export const dynamic = "force-static"`.
+  - Canonical live URL: [`https://merolhack.github.io/sitemap.xml`](https://merolhack.github.io/sitemap.xml).
+- **Robots Policy**: [`src/app/robots.ts`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/src/app/robots.ts)
+  - Exports statically to `/out/robots.txt` declaring open crawling (`User-Agent: *`, `Allow: /`) and referencing the canonical sitemap.
+- **On-Page HTML Sitemap**:
+  - Built into [`src/components/sections/Footer.tsx`](file:///Ubuntu-20.04/home/merolhack/fl/merolhack.github.io/src/components/sections/Footer.tsx) providing direct anchor navigation across all sections.

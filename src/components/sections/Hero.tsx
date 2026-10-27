@@ -5,6 +5,7 @@ import { Github, Linkedin, MessageSquare, Terminal, Award, ChevronDown } from "l
 import { subjectData } from "@/data/subject";
 import { Button } from "@/components/ui/button";
 import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
+import { SectionAnchor } from "@/components/ui/SectionAnchor";
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -19,7 +20,7 @@ export function Hero() {
   };
 
   return (
-    <section id="summary" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pb-16 pt-20">
+    <section id="summary" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pb-16 pt-20 scroll-mt-16">
       {/* Background Gradient / Deep Dark */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-zinc-950 to-zinc-950 -z-10" />
       
@@ -33,6 +34,7 @@ export function Hero() {
           <div className="inline-flex items-center rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-sm font-medium text-indigo-300 backdrop-blur-sm mb-4">
             <Terminal className="mr-2 h-4 w-4" />
             <span>Senior Software Architect</span>
+            <SectionAnchor id="summary" title="Summary" className="ml-1 -mr-1" />
           </div>
 
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-br from-zinc-100 to-zinc-500">

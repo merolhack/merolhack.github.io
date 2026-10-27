@@ -4,6 +4,18 @@
 
 ---
 
+## [2026-10-26] feat | Section Anchor Links, Sitemap.xml & Robots.txt Integration
+- **Operation**: Implemented shareable section anchors, semantic navigation, individual project deep links, sitemap.xml, and robots.txt.
+- **Key Enhancements**:
+  - `Navbar.tsx`: Migrated from `<button>` to semantic `<a>` links with `href` and `history.pushState` URL synchronization.
+  - `SectionAnchor.tsx`: Created interactive `#` permalink copy button with visual feedback across all main section headings.
+  - `PersonalProjects.tsx`: Added direct anchors for `#projects` as well as individual projects (`#cadensa`, `#dqro`, `#freelancemexico`).
+  - `globals.css`: Added global `scroll-behavior: smooth` and `scroll-padding-top: 5.5rem` to avoid header overlap on direct hash access.
+  - `Footer.tsx`: Added on-page HTML sitemap navigation of internal sections and link to `/sitemap.xml`.
+  - `sitemap.ts` & `robots.ts`: Static generation of `out/sitemap.xml` and `out/robots.txt` compatible with Next.js static export.
+  - `layout.tsx`: Added Google `SiteNavigationElement` ItemList JSON-LD schema for sitelinks and deep search indexing.
+- **Files Synchronized**: `src/components/Navbar.tsx`, `src/components/ui/SectionAnchor.tsx`, `src/components/sections/*`, `src/app/sitemap.ts`, `src/app/robots.ts`, `src/app/globals.css`, `src/app/layout.tsx`, `wiki/log.md`.
+
 ## [2026-10-26] ingest | Mandatory Post-Task Commit, Push & GitHub Actions Validation Rule
 - **Operation**: Enforced strict operational mandate requiring agents to commit, push to remote (`origin/main`), and validate the resulting GitHub Actions deployment status upon finishing any locally-validated activity.
 - **Mandates Enforced**:

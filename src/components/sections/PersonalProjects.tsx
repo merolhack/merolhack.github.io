@@ -6,13 +6,14 @@ import { subjectData } from "@/data/subject";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, CheckCircle2, Globe, Layers, ArrowUpRight } from "lucide-react";
+import { SectionAnchor } from "@/components/ui/SectionAnchor";
 
 export function PersonalProjects() {
   const { personalProjects } = subjectData;
   if (!personalProjects || personalProjects.length === 0) return null;
 
   return (
-    <section id="projects" className="py-24 bg-zinc-950 border-t border-zinc-900 relative overflow-hidden">
+    <section id="projects" className="py-24 bg-zinc-950 border-t border-zinc-900 relative overflow-hidden scroll-mt-16">
       {/* Subtle background glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
@@ -24,8 +25,9 @@ export function PersonalProjects() {
             <span>Personal Projects & Platforms</span>
           </div>
 
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-zinc-100">
-            Proyectos Personales & Plataformas en Producción
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-zinc-100 flex items-center justify-center gap-1 group/title">
+            <span>Proyectos Personales & Plataformas en Producción</span>
+            <SectionAnchor id="projects" title="Proyectos Personales" />
           </h2>
 
           <p className="text-zinc-400 max-w-2xl text-base font-light leading-relaxed">
@@ -41,11 +43,12 @@ export function PersonalProjects() {
             return (
               <motion.div
                 key={project.id || index}
+                id={project.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.7, delay: index * 0.15 }}
-                className="rounded-3xl border border-zinc-800/80 bg-zinc-900/30 backdrop-blur-xl p-6 sm:p-8 lg:p-10 hover:border-zinc-700/80 transition-all duration-300 shadow-2xl shadow-black/60"
+                className="scroll-mt-28 rounded-3xl border border-zinc-800/80 bg-zinc-900/30 backdrop-blur-xl p-6 sm:p-8 lg:p-10 hover:border-zinc-700/80 transition-all duration-300 shadow-2xl shadow-black/60"
               >
                 <div className={`grid gap-8 lg:gap-12 lg:grid-cols-12 items-center ${isReversed ? "lg:grid-flow-dense" : ""}`}>
                   {/* Browser Mockup / Screenshot Column */}
@@ -113,6 +116,9 @@ export function PersonalProjects() {
                             {project.title}
                             <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-indigo-400 transition-colors" />
                           </a>
+                          {project.id && (
+                            <SectionAnchor id={project.id} title={project.title} className="opacity-40 group-hover:opacity-100 focus:opacity-100 ml-1.5" />
+                          )}
                         </h3>
                         <p className="text-sm text-zinc-400 font-medium mt-1">
                           {project.tagline}

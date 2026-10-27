@@ -86,6 +86,61 @@ const jsonLd = [
     },
     "datePublished": "2026-08-21",
     "description": "La guía técnica definitiva para arquitectos de software, líderes de ingeniería y CTOs que necesitan diseñar, migrar y operar sistemas modernos de misión crítica basados en el paradigma MACH (Microservices, API-First, Cloud-Native, Headless) y agentes autónomos de IA."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Portfolio Sections",
+    "itemListElement": [
+      {
+        "@type": "SiteNavigationElement",
+        "position": 1,
+        "name": "Summary",
+        "url": "https://merolhack.github.io/#summary"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 2,
+        "name": "Playbook de Arquitectura MACH",
+        "url": "https://merolhack.github.io/#book"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 3,
+        "name": "Technical Competencies",
+        "url": "https://merolhack.github.io/#skills"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 4,
+        "name": "Enterprise Architecture & Cloud Topology",
+        "url": "https://merolhack.github.io/#architecture"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 5,
+        "name": "Career Architecture",
+        "url": "https://merolhack.github.io/#timeline"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 6,
+        "name": "Personal Projects & Platforms",
+        "url": "https://merolhack.github.io/#projects"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 7,
+        "name": "Architecture & Repositories",
+        "url": "https://merolhack.github.io/#repositories"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 8,
+        "name": "Contact",
+        "url": "https://merolhack.github.io/#contact"
+      }
+    ]
   }
 ];
 

@@ -20,13 +20,29 @@ export function Footer() {
             </Button>
           </a>
         </div>
+
+        {/* Internal Section Links / HTML Sitemap */}
+        <nav aria-label="Footer Section Navigation" className="pt-6 border-t border-zinc-900/80 w-full">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-mono text-zinc-400">
+            <a href="#summary" className="hover:text-indigo-400 transition-colors">#summary</a>
+            <a href="#book" className="hover:text-indigo-400 transition-colors">#book</a>
+            <a href="#skills" className="hover:text-indigo-400 transition-colors">#skills</a>
+            <a href="#architecture" className="hover:text-indigo-400 transition-colors">#architecture</a>
+            <a href="#timeline" className="hover:text-indigo-400 transition-colors">#timeline</a>
+            <a href="#projects" className="hover:text-indigo-400 transition-colors">#projects</a>
+            <a href="#repositories" className="hover:text-indigo-400 transition-colors">#repositories</a>
+            <a href="#contact" className="hover:text-indigo-400 transition-colors">#contact</a>
+          </div>
+        </nav>
         
-        <div className="mt-8 pt-8 border-t border-zinc-900 w-full text-zinc-500 text-sm flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-4 border-t border-zinc-900 w-full text-zinc-500 text-xs flex flex-col md:flex-row items-center justify-between gap-4 font-mono">
           <div>
             &copy; {new Date().getFullYear()} {subjectData.name}. All rights reserved. &bull; Deployed via GitHub Pages.
           </div>
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             <a href="/privacy" className="hover:text-zinc-300 transition-colors">Privacy Policy</a>
+            <span>&bull;</span>
+            <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400 transition-colors">sitemap.xml</a>
           </div>
         </div>
       </div>
